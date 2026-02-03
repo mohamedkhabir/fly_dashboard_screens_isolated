@@ -9,11 +9,11 @@
         <span class="logo-text">B2B Booking Pro</span>
       </div>
       <nav class="header-nav">
-        <a routerLink="/dashboard" class="nav-link" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/sales-reporting" class="nav-link" routerLinkActive="active">Dashboard</a>
         <a routerLink="/bookings" class="nav-link" routerLinkActive="active">Bookings</a>
-        <a routerLink="/sales-reporting" class="nav-link" routerLinkActive="active">Reports</a>
+        <a routerLink="/report" class="nav-link" routerLinkActive="active">Reports</a>
         <a routerLink="/agents" class="nav-link" routerLinkActive="active">Agents</a>
-        <a routerLink="/settings" class="nav-link" routerLinkActive="active">Settings</a>
+        <a routerLink="/admin-settings" class="nav-link" routerLinkActive="active">Settings</a>
       </nav>
       <div class="header-actions">
         <div class="gds-status">
@@ -126,28 +126,29 @@
         </div>
       </div>
 
+      <!-- ==========================================
+     CHART CARD
+     ========================================== -->
       <div class="chart-card">
-        <div class="chart-header">
-          <h2>Performance Trend</h2>
-          <div class="chart-tabs">
-            <button
-              class="tab-button"
-              [class.active]="activeTab === 'spending'"
-              (click)="setTab('spending')"
-            >
-              Spending
-            </button>
-            <button
-              class="tab-button"
-              [class.active]="activeTab === 'volume'"
-              (click)="setTab('volume')"
-            >
-              Volume
-            </button>
-          </div>
-        </div>
 
-        <div class="chart-container">
+        <!-- Header: title + tabs on LEFT, legend on RIGHT -->
+        <div class="chart-header">
+          <div class="chart-header-left">
+            <h2>Performance Trend</h2>
+            <div class="chart-tabs">
+              <button
+                class="tab-button"
+                [class.active]="activeTab === 'spending'"
+                (click)="setTab('spending')"
+              >Spending</button>
+              <button
+                class="tab-button"
+                [class.active]="activeTab === 'volume'"
+                (click)="setTab('volume')"
+              >Volume</button>
+            </div>
+          </div>
+
           <div class="chart-legend">
             <div class="legend-item">
               <span class="legend-dot current"></span>
@@ -158,20 +159,39 @@
               <span>Previous Period</span>
             </div>
           </div>
+        </div>
 
-          <div class="chart">
-            <div class="chart-bars">
-              <div class="chart-column" *ngFor="let data of chartData; let i = index">
-                <div class="bar-group">
-                  <div class="bar previous" [style.height.%]="data.previous">
-                    <div class="bar-tooltip">{{ data.previous }}%</div>
-                  </div>
-                  <div class="bar current" [style.height.%]="data.current">
-                    <div class="bar-tooltip">{{ data.current }}%</div>
-                  </div>
-                </div>
-                <div class="chart-label">{{ chartMonths[i] }}</div>
+        <!-- Chart body -->
+        <div class="chart">
+          <div class="chart-bars">
+            <div
+              class="chart-column"
+              *ngFor="let data of chartData; let i = index"
+              (mouseenter)="hoveredIndex = i"
+              (mouseleave)="hoveredIndex = -1"
+            >
+              <!-- Tooltip — only on current-period bar, floats above -->
+              <div class="bar-tooltip" [class.visible]="hoveredIndex === i && data.isCurrent">
+                <span class="tooltip-label">Current:</span>
+                <span class="tooltip-value">{{ data.label }}</span>
               </div>
+
+              <!-- Single bar: N segments stacked, white gaps between -->
+              <div
+                class="bar"
+                [class.bar-current]="data.isCurrent"
+                [class.bar-previous]="!data.isCurrent"
+                [style.height.px]="data.totalHeight"
+              >
+                <div
+                  class="segment"
+                  *ngFor="let seg of data.segments"
+                  [style.flex]="seg"
+                ></div>
+              </div>
+
+              <!-- Month label -->
+              <div class="chart-label">{{ chartMonths[i] }}</div>
             </div>
           </div>
         </div>

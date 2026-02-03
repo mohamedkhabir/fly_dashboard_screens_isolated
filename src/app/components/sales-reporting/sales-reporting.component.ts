@@ -18,6 +18,12 @@ interface MonthlyData {
   status: string;
 }
 
+interface BarData {
+  totalHeight: number;
+  segments:    number[];
+  isCurrent:   boolean;
+  label:       string;
+}
 @Component({
   selector: 'app-sales-reporting',
   standalone: true,
@@ -28,7 +34,7 @@ interface MonthlyData {
 export class SalesReportingComponent implements OnInit {
   activeFilter = 'last30';
   activeTab = 'spending';
-
+  hoveredIndex  = -1;
   metrics: MetricCard[] = [
     {
       title: 'TOTAL SPENT',
@@ -60,14 +66,14 @@ export class SalesReportingComponent implements OnInit {
   ];
 
   chartMonths = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL'];
-  chartData = [
-    { current: 65, previous: 60 },
-    { current: 75, previous: 70 },
-    { current: 55, previous: 65 },
-    { current: 85, previous: 75 },
-    { current: 70, previous: 72 },
-    { current: 90, previous: 80 },
-    { current: 95, previous: 85 }
+  chartData: BarData[] = [
+    { totalHeight: 100, segments: [1, 1],          isCurrent: false, label: '' },   // JAN
+    { totalHeight: 145, segments: [1, 1],          isCurrent: false, label: '' },   // FEB
+    { totalHeight: 118, segments: [1, 1],          isCurrent: false, label: '' },   // MAR
+    { totalHeight: 170, segments: [1, 1],          isCurrent: false, label: '' },   // APR
+    { totalHeight: 150, segments: [1, 1],          isCurrent: false, label: '' },   // MAY
+    { totalHeight: 195, segments: [1, 1],          isCurrent: false, label: '' },   // JUN
+    { totalHeight: 250, segments: [1, 1, 1, 1],   isCurrent: true,  label: '$3k' }, // JUL
   ];
 
   constructor() {}

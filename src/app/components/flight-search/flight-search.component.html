@@ -2,346 +2,161 @@
   <header class="page-header">
     <div class="header-content">
       <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
-          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="5" width="9" height="18" rx="2" fill="#0D6EFD"/><rect x="17" y="5" width="9" height="18" rx="2" fill="#0D6EFD"/></svg>
         <span class="logo-text">AmadeusB2B</span>
       </div>
       <nav class="header-nav">
-        <a routerLink="/flight-search" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
-        <a routerLink="/flight-search" class="nav-link" routerLinkActive="active">Search Flights</a>
-        <a routerLink="/booking-confirmation" class="nav-link" routerLinkActive="active">My Bookings</a>
-        <a routerLink="/wallet" class="nav-link" routerLinkActive="active">Wallet</a>
+        <a routerLink="/flight-search" class="nav-link">Dashboard</a>
+        <a routerLink="/flight-search" class="nav-link active">Search Flights</a>
+        <a routerLink="/booking-confirmation" class="nav-link">My Bookings</a>
+        <a routerLink="/wallet" class="nav-link">Wallet</a>
       </nav>
       <div class="header-actions">
-        <div class="user-info">
-          <span class="user-label">Corporate User</span>
-          <span class="agency-id">Agency ID: 88239</span>
-        </div>
-        <div class="user-avatar">
-          <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%230D6EFD'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+        <button class="icon-btn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3a5 5 0 00-5 5c0 3.5 5 8 5 8s5-4.5 5-8a5 5 0 00-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" fill="#6b7280"/></svg></button>
+        <button class="icon-btn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#6b7280" stroke-width="1.5" fill="none"/><path d="M10 6v4l3 2" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="user-block">
+          <div class="user-info"><span class="user-label">Corporate User</span><span class="agency-id">Agency ID: 88219</span></div>
+          <div class="user-avatar">U</div>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="search-summary-bar">
-    <div class="summary-content">
-      <div class="route-info">
-        <div class="route-details">
-          <span class="location">{{ searchSummary.from }} ({{ searchSummary.fromCode }})</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <span class="location">{{ searchSummary.to }} ({{ searchSummary.toCode }})</span>
-        </div>
-        <div class="travel-details">
-          <span>{{ searchSummary.date }}</span>
-          <span class="separator">•</span>
-          <span>{{ searchSummary.passengers }} Adult</span>
-          <span class="separator">•</span>
-          <span>{{ searchSummary.cabinClass }}</span>
-        </div>
+  <div class="breadcrumb-bar"><div class="breadcrumb-content">
+    <span class="crumb">Home</span><span class="crumb-sep">›</span>
+    <span class="crumb">Flights</span><span class="crumb-sep">›</span>
+    <span class="crumb crumb-active">Search Results</span>
+  </div></div>
+
+  <div class="route-card-wrap"><div class="route-card">
+    <div class="route-left">
+      <div class="route-heading">
+        <span class="route-city">London (LHR)</span>
+        <svg class="swap-icon" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 7h14M14 4l3 3-3 3" stroke="#0D6EFD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 15H4M8 12l-3 3 3 3" stroke="#0D6EFD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="route-city">New York (JFK)</span>
       </div>
-      <button class="btn btn-outline" (click)="modifySearch()">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M13 2L16 5L6 15H3V12L13 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Modify Search
-      </button>
+      <div class="route-meta">
+        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="2" stroke="#6b7280" stroke-width="1.2" fill="none"/><path d="M1 5h12" stroke="#6b7280" stroke-width="1.2"/></svg> Oct 24 – Oct 31</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#6b7280" stroke-width="1.2" fill="none"/><path d="M2 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#6b7280" stroke-width="1.2" fill="none"/></svg> 1 Adult</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 11V4l5-2 5 2v7l-5 2-5-2z" stroke="#6b7280" stroke-width="1.2" fill="none"/></svg> Economy</span>
+      </div>
     </div>
-  </div>
+    <button class="modify-btn" (click)="modifySearch()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.5 1.5l3 3L5 13H2v-3L11.5 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Modify Search
+    </button>
+  </div></div>
 
   <div class="main-layout">
     <aside class="filters-sidebar">
-      <div class="filters-header">
-        <h3>Filters</h3>
-        <button class="clear-button" (click)="clearFilters()">Clear All</button>
-      </div>
-
+      <div class="filters-header"><h3>Filters</h3><button class="clear-btn" (click)="clearFilters()">Clear All</button></div>
       <div class="filter-section">
         <h4 class="filter-title">STOPS</h4>
         <div class="filter-options">
-          <label class="filter-option">
-            <input
-              type="radio"
-              name="stops"
-              value="direct"
-              [checked]="selectedStops === 'direct'"
-              (change)="setStopsFilter('direct')"
-            >
-            <span class="option-label">Direct</span>
-            <span class="option-price">from $420</span>
-          </label>
-          <label class="filter-option">
-            <input
-              type="radio"
-              name="stops"
-              value="1-stop"
-              [checked]="selectedStops === '1-stop'"
-              (change)="setStopsFilter('1-stop')"
-            >
-            <span class="option-label">1 Stop</span>
-            <span class="option-price">from $380</span>
-          </label>
-          <label class="filter-option">
-            <input
-              type="radio"
-              name="stops"
-              value="2-plus"
-              [checked]="selectedStops === '2-plus'"
-              (change)="setStopsFilter('2-plus')"
-            >
-            <span class="option-label">2+ Stops</span>
-            <span class="option-price">from $350</span>
-          </label>
+          <label class="filter-option"><input type="checkbox" [checked]="selectedStops==='direct'" (change)="setStopsFilter('direct')"><span class="opt-label">Direct</span><span class="opt-price">from $420</span></label>
+          <label class="filter-option"><input type="checkbox" [checked]="selectedStops==='1-stop'" (change)="setStopsFilter('1-stop')"><span class="opt-label">1 Stop</span><span class="opt-price">from $380</span></label>
+          <label class="filter-option"><input type="checkbox" [checked]="selectedStops==='2-plus'" (change)="setStopsFilter('2-plus')"><span class="opt-label">2+ Stops</span><span class="opt-price">from $350</span></label>
         </div>
       </div>
-
       <div class="filter-section">
         <h4 class="filter-title">PRICE RANGE</h4>
-        <div class="price-range-display">
-          <span>${{ priceRange[0] }}</span>
-          <span>${{ priceRange[1] }}+</span>
-        </div>
-        <div class="price-slider">
-          <div class="slider-track"></div>
-          <div class="slider-range" [style.left.%]="((priceRange[0] - 350) / (2400 - 350)) * 100" [style.width.%]="((priceRange[1] - priceRange[0]) / (2400 - 350)) * 100"></div>
-        </div>
+        <div class="slider-wrap"><div class="slider-track">
+          <div class="slider-fill" [style.left.%]="((priceRange[0]-350)/(2400-350))*100" [style.width.%]="((priceRange[1]-priceRange[0])/(2400-350))*100"></div>
+          <div class="slider-thumb" [style.left.%]="((priceRange[0]-350)/(2400-350))*100"></div>
+        </div></div>
+        <div class="price-labels"><span>${{priceRange[0]}}</span><span>${{priceRange[1]}}+</span></div>
       </div>
-
       <div class="filter-section">
         <h4 class="filter-title">AIRLINES</h4>
         <div class="filter-options">
-          <label class="filter-checkbox" *ngFor="let airline of airlines">
-            <input
-              type="checkbox"
-              [checked]="selectedAirlines.includes(airline)"
-              (change)="toggleAirline(airline)"
-            >
-            <span class="checkbox-label">{{ airline }}</span>
-          </label>
+          <label class="filter-option" *ngFor="let a of airlines"><input type="checkbox" [checked]="selectedAirlines.includes(a)" (change)="toggleAirline(a)"><span class="opt-label">{{a}}</span></label>
         </div>
       </div>
-
       <div class="filter-section">
         <h4 class="filter-title">DEPARTURE TIME</h4>
-        <div class="time-slots">
-          <button
-            class="time-slot"
-            [class.active]="selectedDeparture === 'morning'"
-            (click)="setDepartureTime('morning')"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            <span>Early Morning</span>
-          </button>
-          <button
-            class="time-slot"
-            [class.active]="selectedDeparture === 'afternoon'"
-            (click)="setDepartureTime('afternoon')"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            <span>Afternoon</span>
-          </button>
-          <button
-            class="time-slot"
-            [class.active]="selectedDeparture === 'evening'"
-            (click)="setDepartureTime('evening')"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            <span>Night</span>
-          </button>
+        <div class="time-grid">
+          <button class="time-btn" [class.active]="selectedDeparture==='early'" (click)="setDepartureTime('early')">Early Morning</button>
+          <button class="time-btn" [class.active]="selectedDeparture==='afternoon'" (click)="setDepartureTime('afternoon')">Afternoon</button>
+          <button class="time-btn" [class.active]="selectedDeparture==='evening'" (click)="setDepartureTime('evening')">Evening</button>
+          <button class="time-btn" [class.active]="selectedDeparture==='night'" (click)="setDepartureTime('night')">Night</button>
         </div>
       </div>
     </aside>
 
     <main class="results-main">
-      <div class="quick-stats">
-        <div class="stat-box">
-          <span class="stat-label">CHEAPEST</span>
-          <span class="stat-value">${{ stats.cheapest }}</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">FASTEST</span>
-          <span class="stat-value">{{ stats.fastest }}</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">BEST VALUE</span>
-          <span class="stat-value">{{ stats.bestValue }}/5</span>
-        </div>
+      <div class="stats-row">
+        <div class="stat-card stat-active"><span class="stat-label">CHEAPEST</span><span class="stat-value">${{stats.cheapest}}</span></div>
+        <div class="stat-card"><span class="stat-label">FASTEST</span><span class="stat-value">{{stats.fastest}}</span></div>
+        <div class="stat-card"><span class="stat-label">BEST VALUE</span><span class="stat-value">{{stats.bestValue}}/5</span></div>
       </div>
-
-      <div class="results-header">
-        <div class="results-count">
-          Showing {{ filteredFlights.length }}-{{ Math.min(currentPage * 10, totalResults) }} of {{ totalResults }} flight results
-        </div>
-        <div class="sort-options">
-          <button class="sort-button active">Cheapest</button>
-          <button class="sort-button">Fastest</button>
-          <button class="sort-button">Best</button>
-        </div>
+      <div class="results-meta">
+        <span class="results-count">Showing <strong>{{totalResults}}</strong> flight results</span>
+        <div class="currency-wrap"><span class="currency-label">Currency:</span><button class="currency-btn">USD <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="#374151" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
       </div>
-
       <div class="flights-list">
-        <div class="flight-card" *ngFor="let flight of filteredFlights">
-          <div class="flight-header">
-            <div class="airline-info">
+        <div class="flight-card" *ngFor="let f of filteredFlights">
+          <div class="card-body">
+            <div class="airline-col">
               <div class="airline-logo">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="14" fill="#E7F1FF"/>
-                  <path d="M24 16L16 8L8 16L16 24L24 16Z" fill="#0D6EFD"/>
-                </svg>
+                <svg *ngIf="f.airline==='British Airways'" width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" fill="#E7F1FF"/><path d="M19 10c-2.5 0-4.5 1.8-5 4L12 20h14l-2-6c-.5-2.2-2.5-4-5-4z" fill="#0D6EFD"/><rect x="13" y="20" width="12" height="2.5" rx="1" fill="#0D6EFD"/></svg>
+                <svg *ngIf="f.airline==='Lufthansa'" width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" fill="#E7F1FF"/><circle cx="19" cy="19" r="9" stroke="#0D6EFD" stroke-width="2" fill="none"/><path d="M10 19h18M19 10v18" stroke="#0D6EFD" stroke-width="1.5"/><ellipse cx="19" cy="19" rx="5" ry="9" stroke="#0D6EFD" stroke-width="1.2" fill="none"/></svg>
+                <svg *ngIf="f.airline==='Virgin Atlantic'" width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="17" fill="#FEE2E2"/><path d="M19 9l4 7h-3v6h3l-4 7-4-7h3v-6h-3z" fill="#EF4444"/></svg>
               </div>
-              <div class="airline-details">
-                <div class="airline-name">{{ flight.airline }}</div>
-                <div class="flight-number">{{ flight.flightNumber }}</div>
-              </div>
+              <div><div class="airline-name">{{f.airline}}</div><div class="flight-num">{{f.flightNumber}}</div></div>
             </div>
-            <div class="flight-badges">
-              <span class="badge markup" *ngIf="flight.hasMarkup">Markup Included</span>
-              <span class="badge gds" *ngIf="flight.isGDS">GDS Content</span>
-            </div>
-          </div>
-
-          <div class="flight-details">
-            <div class="flight-time">
-              <div class="time-point">
-                <div class="time">{{ flight.departure.time }}</div>
-                <div class="code">{{ flight.departure.code }}</div>
-              </div>
-              <div class="flight-path">
-                <div class="duration-info">
-                  <span class="duration">{{ flight.duration }}</span>
-                  <span class="stops" *ngIf="flight.stops === 0">Non-stop</span>
-                  <span class="stops" *ngIf="flight.stops > 0">{{ flight.stops }} stop</span>
-                </div>
+            <div class="times-col">
+              <div class="t-block"><div class="t-time">{{f.departure.time}}</div><div class="t-code">{{f.departure.code}}</div></div>
+              <div class="path-mid">
+                <span class="path-dur">{{f.duration}}</span>
                 <div class="path-line">
-                  <div class="line"></div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="plane-icon">
-                    <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="#6B7280"/>
-                  </svg>
-                  <div class="line"></div>
+                  <div class="pline"></div>
+                  <span class="path-dot" *ngIf="f.stops>0"></span>
+                  <div class="pline"></div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
+                <span class="path-stop-label"><span *ngIf="f.stops===0" class="nonstop">Non-stop</span><span *ngIf="f.stops>0" class="stoptext">1stop (FRA)</span></span>
               </div>
-              <div class="time-point">
-                <div class="time">{{ flight.arrival.time }}</div>
-                <div class="code">{{ flight.arrival.code }}</div>
-              </div>
+              <div class="t-block"><div class="t-time">{{f.arrival.time}}</div><div class="t-code">{{f.arrival.code}}</div></div>
             </div>
-
-            <div class="flight-amenities">
-              <div class="amenity" [class.available]="flight.baggage">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <rect x="5" y="3" width="8" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M7 3V2C7 1.44772 7.44772 1 8 1H10C10.5523 1 11 1.44772 11 2V3" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-                <span>{{ flight.baggage }}</span>
-              </div>
-              <div class="amenity" [class.available]="flight.meal">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 2V8C3 9.10457 3.89543 10 5 10V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M15 2V6C15 7.10457 14.1046 8 13 8V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <span>{{ flight.meal ? 'Meal Included' : 'No meal' }}</span>
-              </div>
-              <div class="amenity" [class.available]="flight.wifi">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M2 7C5.31371 3.68629 11.6863 3.68629 15 7M5 10C6.65685 8.34315 9.34315 8.34315 11 10M8 13H8.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <span>{{ flight.wifi ? 'Free Wi-Fi' : 'No Wi-Fi' }}</span>
-              </div>
-              <div class="seats-left" *ngIf="flight.seats <= 10">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="7" stroke="#F59E0B" stroke-width="1.5"/>
-                  <path d="M9 5V9M9 13H9.01" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <span>{{ flight.seats }} seats left</span>
-              </div>
+            <div class="price-col">
+              <span class="price-badge markup" *ngIf="f.hasMarkup">Markup Included</span>
+              <span class="price-badge gds" *ngIf="f.isGDS">GDS Content</span>
+              <span class="price-badge top" *ngIf="f.airline==='Virgin Atlantic'">Top Rated</span>
+              <div class="price-amount">${{f.price.toLocaleString('en-US',{minimumFractionDigits:2})}}</div>
+              <div class="price-sub">Incl. taxes & fees</div>
+              <button class="select-btn" (click)="selectFlight(f)">Select</button>
             </div>
           </div>
-
-          <div class="flight-price">
-            <div class="price-info">
-              <div class="price-label">incl. taxes & fees</div>
-              <div class="price-amount">${{ flight.price.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="card-footer">
+            <div class="amenities">
+              <span class="amen"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3.5" y="1.5" width="7" height="11" rx="1" stroke="#6b7280" stroke-width="1.1" fill="none"/><path d="M5 1.5V1a1 1 0 011-1h2a1 1 0 011 1v.5" stroke="#6b7280" stroke-width="1.1" fill="none"/></svg>{{f.baggage}}</span>
+              <span class="amen"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2v5a2 2 0 002 2v4" stroke="#6b7280" stroke-width="1.1" stroke-linecap="round"/><path d="M12 2v4a1.5 1.5 0 01-1.5 1.5V11" stroke="#6b7280" stroke-width="1.1" stroke-linecap="round"/></svg>{{f.meal ? 'Meal included' : 'No meal'}}</span>
+              <span class="amen" *ngIf="f.wifi"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 5.5c3-3 8-3 11 0M4.5 8.5c1.5-1.5 4.5-1.5 5 0M7 11.5h.01" stroke="#6b7280" stroke-width="1.1" stroke-linecap="round"/></svg>Free Wi-Fi</span>
+              <span class="amen amen-seats" *ngIf="f.seats<=10"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v4.5l2 1.5" stroke="#F59E0B" stroke-width="1.1" stroke-linecap="round"/></svg>{{f.seats}} seats left</span>
             </div>
-            <div class="action-buttons">
-              <button class="btn btn-primary" (click)="selectFlight(flight)">
-                Select
-              </button>
-              <button class="btn btn-text" (click)="viewDetails(flight)">
-                View Details
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
+            <button class="view-det-btn" (click)="viewDetails(f)">View Details <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M5 3l3.5 3.5L5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
           </div>
         </div>
       </div>
-
       <div class="pagination">
-        <div class="pagination-info">
-          Showing page {{ currentPage }} of {{ Math.ceil(totalResults / 10) }}
-        </div>
-        <div class="pagination-controls">
-          <button
-            class="page-button"
-            (click)="previousPage()"
-            [disabled]="currentPage === 1"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button
-            class="page-number"
-            [class.active]="currentPage === 1"
-            (click)="goToPage(1)"
-          >
-            1
-          </button>
-          <button
-            class="page-number"
-            [class.active]="currentPage === 2"
-            (click)="goToPage(2)"
-          >
-            2
-          </button>
-          <button
-            class="page-number"
-            [class.active]="currentPage === 3"
-            (click)="goToPage(3)"
-          >
-            3
-          </button>
-          <span class="page-ellipsis">...</span>
-          <button
-            class="page-number"
-            (click)="goToPage(12)"
-          >
-            12
-          </button>
-          <button
-            class="page-button"
-            (click)="nextPage()"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
+        <button class="pg-btn pg-arrow" (click)="previousPage()" [disabled]="currentPage===1"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <button class="pg-btn" [class.active]="currentPage===1" (click)="goToPage(1)">1</button>
+        <button class="pg-btn" [class.active]="currentPage===2" (click)="goToPage(2)">2</button>
+        <button class="pg-btn" [class.active]="currentPage===3" (click)="goToPage(3)">3</button>
+        <span class="pg-dots">…</span>
+        <button class="pg-btn" [class.active]="currentPage===12" (click)="goToPage(12)">12</button>
+        <button class="pg-btn pg-arrow" (click)="nextPage()"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       </div>
     </main>
   </div>
+
+  <footer class="site-footer"><div class="footer-content">
+    <div class="footer-left">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="1" y="4" width="7" height="12" rx="1.5" fill="#0D6EFD"/><rect x="12" y="4" width="7" height="12" rx="1.5" fill="#0D6EFD"/></svg>
+      <span>© 2024 AmadeusB2B Flights. All rights reserved.</span>
+    </div>
+    <div class="footer-links"><a href="#">TERMS</a><a href="#">PRIVACY</a><a href="#">SUPPORT</a><a href="#">API DOCS</a></div>
+  </div></footer>
 </div>
