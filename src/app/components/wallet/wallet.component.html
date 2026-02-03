@@ -1,0 +1,277 @@
+<div class="wallet-container">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
+          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">B2B Travel</span>
+      </div>
+      <nav class="header-nav">
+        <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+        <a routerLink="/flights" class="nav-link">Flights</a>
+        <a routerLink="/bookings" class="nav-link">Bookings</a>
+        <a routerLink="/wallet" class="nav-link" routerLinkActive="active">Wallet</a>
+        <a routerLink="/settings" class="nav-link">Settings</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="#9CA3AF" stroke-width="1.5"/>
+            <path d="M12 12L16 16" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input type="text" placeholder="Search transactions...">
+        </div>
+        <button class="icon-button">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <div class="user-avatar">
+          <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%230D6EFD'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="breadcrumb-content">
+      <a routerLink="/dashboard">Dashboard</a>
+      <span class="separator">/</span>
+      <span class="current">Wallet</span>
+    </div>
+  </div>
+
+  <main class="wallet-main">
+    <div class="container">
+      <div class="page-title-section">
+        <div>
+          <h1>Wallet Management</h1>
+          <p class="subtitle">Track agency credits and manage ticket issuance funds via Amadeus.</p>
+        </div>
+        <div class="title-actions">
+          <button class="btn btn-secondary" (click)="downloadStatement()">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2V10M9 10L12 7M9 10L6 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Statement
+          </button>
+          <button class="btn btn-primary" (click)="topUpWallet()">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 6V12M6 9H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Top Up Wallet
+          </button>
+        </div>
+      </div>
+
+      <div class="balance-cards">
+        <div class="balance-card primary">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 10H21" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17" cy="14" r="1.5" fill="currentColor"/>
+              </svg>
+              <span>AVAILABLE BALANCE</span>
+            </div>
+          </div>
+          <div class="card-amount">${{ availableBalance.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="card-change positive">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 12V4M8 4L5 7M8 4L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>+{{ balanceChange }}% from last month</span>
+          </div>
+        </div>
+
+        <div class="balance-card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="currentColor"/>
+              </svg>
+              <span>SPENT THIS MONTH</span>
+            </div>
+          </div>
+          <div class="card-amount">${{ spentThisMonth.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="card-change positive">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 12V4M8 4L5 7M8 4L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>+{{ spendingChange }}% vs projection</span>
+          </div>
+        </div>
+
+        <div class="balance-card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>PENDING SETTLEMENTS</span>
+            </div>
+          </div>
+          <div class="card-amount">${{ pendingSettlements.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="card-change negative">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 4V12M8 12L5 9M8 12L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>{{ settlementChange }}% lower than avg</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="transactions-section">
+        <div class="section-header">
+          <h2>Transaction Ledger</h2>
+          <div class="filters">
+            <div class="filter-dropdown">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2 4H16M5 9H13M8 14H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <select [(ngModel)]="selectedFilter" (change)="setFilter(selectedFilter)">
+                <option value="all">All Transactions</option>
+                <option value="ticket">Ticket Issuance</option>
+                <option value="refill">Bank Refills</option>
+                <option value="refund">Refunds</option>
+                <option value="tax">Tax</option>
+              </select>
+            </div>
+            <div class="date-picker">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="3" y="4" width="12" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 7H15M6 2V5M12 2V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <input type="text" [value]="selectedMonth" readonly>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="transactions-table">
+            <thead>
+            <tr>
+              <th>DATE & TIME</th>
+              <th>TYPE</th>
+              <th>REFERENCE (PNR)</th>
+              <th>AMOUNT</th>
+              <th>STATUS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transaction of filteredTransactions" (click)="viewTransaction(transaction)">
+              <td class="date-cell">
+                <div class="date">{{ transaction.date }}</div>
+                <div class="time">{{ transaction.time }}</div>
+              </td>
+              <td class="type-cell">
+                <div class="type-badge" [ngClass]="transaction.type">
+                  <svg *ngIf="transaction.type === 'ticket'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M15 8L9 2L3 8L9 14L15 8Z" fill="currentColor"/>
+                  </svg>
+                  <svg *ngIf="transaction.type === 'refill'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M9 6V12M6 9H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg *ngIf="transaction.type === 'refund'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M14 9C14 11.7614 11.7614 14 9 14C6.23858 14 4 11.7614 4 9C4 6.23858 6.23858 4 9 4C10.6356 4 12.0878 4.78555 13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M13 3V6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg *ngIf="transaction.type === 'tax'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="3" y="3" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M6 9H12M9 6V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <span *ngIf="transaction.type === 'ticket'">Ticket Issuance</span>
+                  <span *ngIf="transaction.type === 'refill'">Bank Refill</span>
+                  <span *ngIf="transaction.type === 'refund'">Refund</span>
+                  <span *ngIf="transaction.type === 'tax'">Tax Refund</span>
+                </div>
+              </td>
+              <td class="reference-cell">
+                <a href="javascript:void(0)" class="reference-link">{{ transaction.reference }}</a>
+              </td>
+              <td class="amount-cell" [class.positive]="transaction.amount > 0" [class.negative]="transaction.amount < 0">
+                {{ transaction.amount > 0 ? '+' : '' }}${{ Math.abs(transaction.amount).toLocaleString('en-US', {minimumFractionDigits: 2}) }}
+              </td>
+              <td class="status-cell">
+                  <span class="status-badge" [ngClass]="transaction.status">
+                    <span class="status-dot"></span>
+                    {{ transaction.status === 'completed' ? 'Completed' : 'Processing' }}
+                  </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <div class="pagination-info">
+            Showing {{ (currentPage - 1) * 5 + 1 }}-{{ Math.min(currentPage * 5, totalTransactions) }} of {{ totalTransactions }} transactions
+          </div>
+          <div class="pagination-controls">
+            <button
+              class="page-button"
+              (click)="previousPage()"
+              [disabled]="currentPage === 1"
+            >
+              Previous
+            </button>
+            <button
+              class="page-number"
+              [class.active]="currentPage === 1"
+              (click)="goToPage(1)"
+            >
+              1
+            </button>
+            <button
+              class="page-number"
+              [class.active]="currentPage === 2"
+              (click)="goToPage(2)"
+            >
+              2
+            </button>
+            <button
+              class="page-button"
+              (click)="nextPage()"
+              [disabled]="currentPage === totalPages"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#0D6EFD" stroke-width="2"/>
+            <path d="M12 8V12M12 16H12.01" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="info-content">
+          <h3>Auto-Refill is currently DISABLED</h3>
+          <p>Your wallet will not be automatically topped up when balance falls below $500. Subsequent monthly billings will occur on the same date each month.</p>
+        </div>
+        <button class="btn btn-outline" (click)="enableAutoRefill()">
+          Enable Auto-Refill Settings
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wallet-footer">
+    <div class="footer-content">
+      <p>© 2023 B2B Travel Portal. All tickets powered by Amadeus GDS.</p>
+      <div class="footer-links">
+        <a routerLink="/support">Help Center</a>
+        <a routerLink="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</div>

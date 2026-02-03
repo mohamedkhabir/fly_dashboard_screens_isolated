@@ -1,0 +1,349 @@
+<div class="multi-city-container">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
+          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">AmadeusB2B</span>
+      </div>
+      <nav class="header-nav">
+        <a href="javascript:void(0)" class="nav-link">Dashboard</a>
+        <a href="javascript:void(0)" class="nav-link active">Search Flights</a>
+        <a href="javascript:void(0)" class="nav-link">My Bookings</a>
+        <a href="javascript:void(0)" class="nav-link">Wallet</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <div class="user-avatar">
+          <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%230D6EFD'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <div class="breadcrumb-content">
+      <a href="javascript:void(0)">Home</a>
+      <span class="separator">/</span>
+      <a href="javascript:void(0)">Flights</a>
+      <span class="separator">/</span>
+      <span class="current">Multi-City Search</span>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="search-section">
+        <div class="trip-type-selector">
+          <button
+            class="trip-type-button"
+            [class.active]="tripType === 'one-way'"
+            (click)="setTripType('one-way')"
+          >
+            One Way
+          </button>
+          <button
+            class="trip-type-button"
+            [class.active]="tripType === 'round-trip'"
+            (click)="setTripType('round-trip')"
+          >
+            Round Trip
+          </button>
+          <button
+            class="trip-type-button"
+            [class.active]="tripType === 'multi-city'"
+            (click)="setTripType('multi-city')"
+          >
+            Multi-city
+          </button>
+        </div>
+
+        <div class="search-form">
+          <div class="flights-inputs">
+            <div class="flight-row" *ngFor="let leg of legs; let i = index">
+              <div class="flight-number">
+                <span class="flight-label">Flight {{ i + 1 }}</span>
+              </div>
+
+              <div class="input-group from-input">
+                <label class="input-label">FROM</label>
+                <div class="location-input">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 2L3 6L9 10L15 6L9 2Z" fill="currentColor"/>
+                  </svg>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="leg.from"
+                    placeholder="e.g., London (LHR)"
+                  >
+                </div>
+              </div>
+
+              <div class="input-group to-input">
+                <label class="input-label">TO</label>
+                <div class="location-input">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 2L15 6L9 10L3 6L9 2Z" fill="currentColor"/>
+                  </svg>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="leg.to"
+                    placeholder="e.g., New York (JFK)"
+                  >
+                </div>
+              </div>
+
+              <div class="input-group date-input">
+                <label class="input-label">DEPARTURE DATE</label>
+                <div class="date-picker-input">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="3" y="4" width="12" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M3 7H15M6 2V5M12 2V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="leg.date"
+                    placeholder="MM/DD/YYYY"
+                  >
+                </div>
+              </div>
+
+              <div class="input-group return-input" *ngIf="i < legs.length - 1">
+                <label class="input-label">RETURN (DISABLED)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Not applicable"
+                  disabled
+                >
+              </div>
+              <div class="input-group return-input disabled-placeholder" *ngIf="i === legs.length - 1">
+                <div class="disabled-notice"></div>
+              </div>
+
+              <button
+                class="remove-flight-button"
+                *ngIf="legs.length > 2"
+                (click)="removeFlight(i)"
+                title="Remove flight"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <button class="add-flight-button" (click)="addFlight()">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 6V12M6 9H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Add another flight
+            </button>
+          </div>
+
+          <div class="passengers-cabin-row">
+            <div class="input-group passengers-input">
+              <label class="input-label">PASSENGERS</label>
+              <div class="passengers-selector">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M4 15C4 12.2386 6.23858 10 9 10C11.7614 10 14 12.2386 14 15" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <select class="form-control" [(ngModel)]="passengers.adults">
+                  <option value="1">1 Adult, 0 Child</option>
+                  <option value="2">2 Adults, 0 Children</option>
+                  <option value="3">3 Adults, 0 Children</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group cabin-input">
+              <label class="input-label">CABIN CLASS</label>
+              <div class="cabin-selector">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 6L9 3L15 6V12L9 15L3 12V6Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <select class="form-control" [(ngModel)]="cabinClass">
+                  <option value="Economy">Economy (Q)</option>
+                  <option value="Business">Business</option>
+                  <option value="First">First Class</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg search-button" (click)="searchFlights()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 12L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Search Flights
+          </button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="results-header">
+          <h2>Multi-City Search</h2>
+          <p class="subtitle">Standard UI components for validation states, error handling, and confirmation workflows.</p>
+        </div>
+
+        <div class="quick-stats">
+          <div class="stat-box">
+            <span class="stat-label">CHEAPEST</span>
+            <span class="stat-value">${{ stats.cheapest }}</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">FASTEST</span>
+            <span class="stat-value">{{ stats.fastest }}</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">BEST VALUE</span>
+            <span class="stat-value">{{ stats.bestValue }}/5</span>
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <div class="filters-left">
+            <button class="filter-button" [class.active]="selectedFilter === 'all'">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2 4H16M5 9H13M8 14H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              All Transactions
+            </button>
+            <button class="filter-button">Direct</button>
+            <button class="filter-button">1 Stop</button>
+            <button class="filter-button">2+ Stops</button>
+          </div>
+          <button class="clear-filters" (click)="clearFilters()">Clear All</button>
+        </div>
+
+        <div class="info-banner">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="#0D6EFD" stroke-width="1.5"/>
+            <path d="M10 6V10M10 14H10.01" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p>Results are shown for the entire multi-city journey. Prices include all segments and mandatory taxes.</p>
+        </div>
+
+        <div class="flights-list">
+          <div class="flight-bundle" *ngFor="let flight of flights">
+            <div class="bundle-header">
+              <div class="airlines-display">
+                <span class="airlines-label">Multiple Airlines</span>
+                <div class="airlines-list">
+                  <span *ngFor="let airline of flight.airlines">{{ airline }}</span>
+                </div>
+              </div>
+              <div class="bundle-badges">
+                <span class="badge markup" *ngIf="flight.hasMarkup">Markup Included</span>
+              </div>
+            </div>
+
+            <div class="segments-container">
+              <div class="segment-card" *ngFor="let segment of flight.segments; let i = index">
+                <div class="segment-label">Flight {{ i + 1 }}: {{ segment.departure.city }} → {{ segment.arrival.city }}</div>
+
+                <div class="segment-details">
+                  <div class="segment-time">
+                    <div class="time-point">
+                      <div class="time">{{ segment.departure.time }}</div>
+                      <div class="code">{{ segment.departure.code }}</div>
+                    </div>
+
+                    <div class="flight-path">
+                      <div class="duration-info">
+                        <span class="duration">{{ segment.duration }}</span>
+                        <span class="stops" *ngIf="segment.stops === 0">Non-stop</span>
+                        <span class="stops" *ngIf="segment.stops > 0">{{ segment.stops }} stop (CDG)</span>
+                      </div>
+                      <div class="path-line">
+                        <div class="line"></div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="plane-icon">
+                          <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="#6B7280"/>
+                        </svg>
+                        <div class="line"></div>
+                      </div>
+                    </div>
+
+                    <div class="time-point">
+                      <div class="time">{{ segment.arrival.time }}</div>
+                      <div class="code">{{ segment.arrival.code }}</div>
+                    </div>
+                  </div>
+
+                  <div class="segment-info">
+                    <div class="airline-badge">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="8" fill="#E7F1FF"/>
+                        <path d="M14 10L10 6L6 10L10 14L14 10Z" fill="#0D6EFD"/>
+                      </svg>
+                      <span>{{ segment.airline }}</span>
+                    </div>
+                    <div class="flight-meta">{{ segment.flightNumber }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bundle-footer">
+              <div class="total-journey">
+                <div class="journey-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="#6B7280" stroke-width="2"/>
+                    <path d="M12 7V12L16 14" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="journey-details">
+                  <div class="journey-label">Total for all flights</div>
+                  <div class="journey-duration">{{ flight.totalDuration }}</div>
+                </div>
+              </div>
+
+              <div class="bundle-price">
+                <div class="price-info">
+                  <div class="price-label">Total for all flights</div>
+                  <div class="price-amount">${{ flight.price.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+                </div>
+                <div class="bundle-actions">
+                  <button class="btn btn-primary" (click)="selectBundle(flight)">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M6 9L8 11L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Select Bundle
+                  </button>
+                  <button class="btn btn-text" (click)="viewJourneyDetails(flight)">
+                    View Journey Details
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="loading-indicator">
+          <div class="spinner-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <p>Loading 140+ more multi-city options...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

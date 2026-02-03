@@ -1,0 +1,399 @@
+.activation-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.activation-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #0d6efd;
+  }
+}
+
+.user-avatar {
+  .avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+}
+
+.activation-main {
+  padding: 3rem 2rem;
+}
+
+.activation-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.steps-container {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.step-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  transition: all 0.2s;
+
+  &:not(.disabled):hover {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    background: #f9fafb;
+  }
+}
+
+.step-icon {
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+  }
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+
+  &.badge-warning {
+    background: #fef3c7;
+    color: #92400e;
+  }
+}
+
+.step-description {
+  color: #6b7280;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.link-button {
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.subscription-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.pricing-table {
+  margin-bottom: 2rem;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid #f3f4f6;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.total {
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid #e5e7eb;
+
+    .pricing-label {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+  }
+}
+
+.pricing-label {
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+.pricing-value {
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: 0.9375rem;
+
+  &.highlight {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0d6efd;
+  }
+
+  .period {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6b7280;
+  }
+}
+
+.payment-methods {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &.btn-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+    color: white;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+  }
+
+  &.btn-secondary {
+    background: white;
+    color: #374151;
+    border: 1.5px solid #d1d5db;
+
+    &:hover {
+      border-color: #9ca3af;
+      background: #f9fafb;
+    }
+  }
+
+  &.btn-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+.payment-notice {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  p {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.secure-payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+
+  span {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #9ca3af;
+    letter-spacing: 0.05em;
+  }
+}
+
+.payment-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.payment-icon {
+  padding: 0.25rem 0.5rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.help-section {
+  text-align: center;
+  padding: 1.5rem;
+
+  p {
+    color: #6b7280;
+    font-size: 0.9375rem;
+
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem;
+  }
+
+  .header-nav {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    display: none;
+
+    &:last-of-type {
+      display: block;
+    }
+  }
+
+  .activation-main {
+    padding: 2rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .step-card {
+    flex-direction: column;
+  }
+
+  .subscription-card {
+    padding: 1.5rem;
+  }
+}

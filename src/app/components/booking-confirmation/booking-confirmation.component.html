@@ -1,0 +1,269 @@
+<div class="booking-confirmation-container">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4L8 8L16 12L24 8L16 4Z" fill="#0D6EFD"/>
+          <path d="M8 12V20L16 24V16L8 12Z" fill="#0D6EFD" opacity="0.6"/>
+          <path d="M24 12V20L16 24V16L24 12Z" fill="#0D6EFD" opacity="0.8"/>
+        </svg>
+        <span class="logo-text">B2B Travel Hub</span>
+      </div>
+      <nav class="header-nav">
+        <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+        <a routerLink="/flights" class="nav-link">Flights</a>
+        <a routerLink="/bookings" class="nav-link" routerLinkActive="active">Bookings</a>
+        <a routerLink="/finance" class="nav-link">Finance</a>
+      </nav>
+      <div class="wallet-display">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="2" y="4" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="13" cy="9" r="1" fill="currentColor"/>
+        </svg>
+        <span>USD 12,450.00</span>
+      </div>
+      <div class="user-avatar">
+        <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%2310B981'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+      </div>
+    </div>
+  </header>
+
+  <main class="confirmation-main">
+    <div class="container">
+      <div class="success-banner">
+        <div class="success-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" fill="#D1FAE5"/>
+            <circle cx="32" cy="32" r="20" fill="#10B981"/>
+            <path d="M22 32L28 38L42 24" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="success-content">
+          <h1>Booking Confirmed Successfully!</h1>
+          <p>Your Amadeus PNR has been generated and e-tickets have been issued to the passengers.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card pnr">
+          <div class="card-label">PNR REFERENCE</div>
+          <div class="card-value">
+            {{ pnr }}
+            <button class="copy-button" (click)="copyPNR()" title="Copy PNR">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="6" y="6" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 12V4C3 3.44772 3.44772 3 4 3H12" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="info-card status">
+          <div class="card-label">BOOKING STATUS</div>
+          <div class="card-value">
+            <span class="status-indicator"></span>
+            {{ bookingStatus }}
+          </div>
+        </div>
+
+        <div class="info-card amount">
+          <div class="card-label">TOTAL AMOUNT</div>
+          <div class="card-value">{{ currency }} {{ totalAmount.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="main-column">
+          <div class="section-card itinerary">
+            <div class="section-header">
+              <h2>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M17 9L10 3L3 9L10 15L17 9Z" fill="currentColor"/>
+                </svg>
+                Flight Itinerary
+              </h2>
+              <span class="cabin-badge">{{ flightInfo.cabinClass }}</span>
+            </div>
+
+            <div class="flight-timeline">
+              <div class="timeline-point departure">
+                <div class="point-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" fill="#0D6EFD"/>
+                    <circle cx="12" cy="12" r="4" fill="white"/>
+                  </svg>
+                </div>
+                <div class="point-content">
+                  <div class="point-time">{{ flightInfo.departure.time }}</div>
+                  <div class="point-location">
+                    <strong>{{ flightInfo.departure.city }} ({{ flightInfo.departure.code }})</strong>
+                  </div>
+                  <div class="point-details">
+                    {{ flightInfo.departure.airport }}
+                  </div>
+                  <div class="point-date">{{ flightInfo.departure.date }}</div>
+                </div>
+              </div>
+
+              <div class="timeline-connector">
+                <div class="connector-line"></div>
+                <div class="flight-info">
+                  <div class="flight-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="#0D6EFD"/>
+                    </svg>
+                  </div>
+                  <div class="flight-details">
+                    <div class="airline-info">
+                      <strong>{{ flightInfo.airline }}</strong> • {{ flightInfo.flightNumber }}
+                    </div>
+                    <div class="duration">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="#6B7280" stroke-width="1.5"/>
+                        <path d="M8 4V8L11 10" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+                      </svg>
+                      Duration: {{ flightInfo.duration }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-point arrival">
+                <div class="point-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L5 8L12 14L19 8L12 2Z" fill="#0D6EFD"/>
+                    <circle cx="12" cy="12" r="3" fill="white"/>
+                  </svg>
+                </div>
+                <div class="point-content">
+                  <div class="point-time">{{ flightInfo.arrival.time }}</div>
+                  <div class="point-location">
+                    <strong>{{ flightInfo.arrival.city }} ({{ flightInfo.arrival.code }})</strong>
+                  </div>
+                  <div class="point-details">
+                    {{ flightInfo.arrival.airport }}
+                  </div>
+                  <div class="point-date">{{ flightInfo.arrival.date }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="travel-notice">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="8" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M10 6V10M10 14H10.01" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Total travel time: {{ flightInfo.duration }}. Non-stop flight.</span>
+            </div>
+          </div>
+
+          <div class="section-card passengers">
+            <div class="section-header">
+              <h2>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M4 16C4 13.2386 6.23858 11 9 11H11C13.7614 11 16 13.2386 16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                Passenger Details
+              </h2>
+            </div>
+
+            <div class="passengers-list">
+              <div class="passenger-item" *ngFor="let passenger of passengers">
+                <div class="passenger-icon">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" fill="#E7F1FF"/>
+                    <circle cx="16" cy="12" r="4" fill="#0D6EFD"/>
+                    <path d="M8 24C8 20.6863 10.6863 18 14 18H18C21.3137 18 24 20.6863 24 24" fill="#0D6EFD"/>
+                  </svg>
+                </div>
+                <div class="passenger-info">
+                  <div class="passenger-name">{{ passenger.name }}</div>
+                  <div class="passenger-ticket">Ticket: {{ passenger.ticketNumber }}</div>
+                </div>
+                <div class="passenger-status">
+                  <span class="ticket-badge">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    {{ passenger.status }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-column">
+          <div class="action-buttons">
+            <button class="btn btn-primary btn-lg" (click)="downloadPDF()">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2V10M10 10L13 7M10 10L7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H15C15.5304 16 16.0391 15.7893 16.4142 15.4142C16.7893 15.0391 17 14.5304 17 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Download PDF Tickets
+            </button>
+
+            <button class="btn btn-secondary btn-lg" (click)="emailToClient()">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="4" width="16" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 6L10 11L18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Email to Client
+            </button>
+
+            <button class="btn btn-secondary btn-lg" (click)="printReceipt()">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="5" y="2" width="10" height="5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="3" y="7" width="14" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="5" y="11" width="10" height="7" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Print Receipt
+            </button>
+          </div>
+
+          <div class="section-card price-summary">
+            <div class="section-header">
+              <h2>Price Summary</h2>
+            </div>
+
+            <div class="price-rows">
+              <div class="price-row">
+                <span class="price-label">Base Fare</span>
+                <span class="price-value">{{ currency }} {{ priceSummary.baseFare.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</span>
+              </div>
+              <div class="price-row">
+                <span class="price-label">Taxes & Fees</span>
+                <span class="price-value">{{ currency }} {{ priceSummary.taxes.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</span>
+              </div>
+              <div class="price-row commission">
+                <span class="price-label">Agency Commission</span>
+                <span class="price-value">{{ currency }} {{ priceSummary.commission.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</span>
+              </div>
+              <div class="price-row total">
+                <span class="price-label">Total Paid</span>
+                <span class="price-value">{{ currency }} {{ priceSummary.total.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</span>
+              </div>
+            </div>
+
+            <div class="payment-notice">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" stroke="#6B7280" stroke-width="1.5"/>
+                <path d="M8 4V8M8 11H8.01" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span>Paid via {{ paymentMethod }}</span>
+            </div>
+          </div>
+
+          <button class="btn btn-outline btn-lg btn-block" (click)="returnToDashboard()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 10L10 3L17 10M4 9V16C4 16.5523 4.44772 17 5 17H7M13 17H15C15.5523 17 16 16.5523 16 16V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Return to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

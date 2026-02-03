@@ -1,0 +1,256 @@
+<div class="feedback-container">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 3L7 7L14 11L21 7L14 3Z" fill="#0D6EFD"/>
+          <path d="M7 11V17L14 21V15L7 11Z" fill="#0D6EFD" opacity="0.6"/>
+          <path d="M21 11V17L14 21V15L21 11Z" fill="#0D6EFD" opacity="0.8"/>
+        </svg>
+        <span>Amadeus Portal</span>
+      </div>
+      <p class="sidebar-subtitle">Non-IATA Access</p>
+    </div>
+
+    <div class="nav-section">
+      <a routerLink="/feedback" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="3" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="11" y="3" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="3" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+        </svg>
+        <span>Overview</span>
+      </a>
+
+      <a routerLink="/sales-reporting" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3 8H17" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Transactions</span>
+      </a>
+
+      <a routerLink="/admin-verification" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 7L10 3L17 7V13C17 14.1046 16.1046 15 15 15H5C3.89543 15 3 14.1046 3 13V7Z" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Agencies</span>
+      </a>
+
+      <a routerLink="/admin-settings" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+
+      <a routerLink="/support" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 6V10M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Support</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1>System Feedback Modals</h1>
+      <p class="subtitle">Standard UI components for validation states, error handling, and confirmation workflows.</p>
+    </header>
+
+    <div class="demo-section">
+      <div class="section-card">
+        <h2 class="section-title">SUCCESS FEEDBACK</h2>
+        <p class="section-description">Confirmation modals for successful operations</p>
+        <button class="btn btn-success" (click)="showModal('success')">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 9L8 11L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Show Success Modal
+        </button>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">ERROR STATES</h2>
+        <p class="section-description">Error messages with actionable recovery options</p>
+        <button class="btn btn-danger" (click)="showModal('error')">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 5V9M9 13H9.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Show Error Modal
+        </button>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">CONFIRMATION DIALOGS</h2>
+        <p class="section-description">Warning prompts for destructive actions</p>
+        <button class="btn btn-warning" (click)="showModal('warning')">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2L16 15H2L9 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 7V10M9 13H9.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Show Warning Modal
+        </button>
+      </div>
+    </div>
+
+    <div class="toast-section">
+      <h2 class="section-title">FLOATING STATUS (TOASTS)</h2>
+      <div class="toast-grid">
+        <div class="toast-demo success">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="toast-content">
+            <div class="toast-title">Search filters applied successfully</div>
+          </div>
+          <button class="toast-close">×</button>
+        </div>
+
+        <div class="toast-demo info">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6V10M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="toast-content">
+            <div class="toast-title">Updating fare availability...</div>
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <div class="toast-demo warning">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2L17 16H3L10 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 8V11M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="toast-content">
+            <div class="toast-title">Session expires in 2 minutes</div>
+            <button class="toast-action">EXTEND</button>
+          </div>
+          <button class="toast-close">×</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" *ngIf="activeModal === 'success'" (click)="closeModal()">
+    <div class="modal success" (click)="$event.stopPropagation()">
+      <div class="modal-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" fill="#D1FAE5"/>
+          <circle cx="32" cy="32" r="20" fill="#10B981"/>
+          <path d="M22 32L28 38L42 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h2>Booking Confirmed</h2>
+      <p class="modal-message">
+        PNR <strong>(QXJ32P)</strong> has been issued successfully through the Amadeus GDS.
+      </p>
+
+      <div class="flight-summary">
+        <div class="summary-header">FLIGHT SUMMARY</div>
+        <div class="summary-row">
+          <span class="summary-label">Flight {{ successData.flightNumber }}</span>
+        </div>
+        <div class="summary-row route">
+          {{ successData.route }}
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Traveler:</span>
+          <span class="summary-value">{{ successData.passenger }}</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary" (click)="printTicket()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <rect x="4" y="2" width="10" height="4" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="2" y="6" width="14" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="4" y="10" width="10" height="6" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          Print Ticket
+        </button>
+        <button class="btn btn-secondary" (click)="manageBooking()">Manage</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div class="modal-overlay" *ngIf="activeModal === 'error'" (click)="closeModal()">
+    <div class="modal error" (click)="$event.stopPropagation()">
+      <div class="modal-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" fill="#FEE2E2"/>
+          <circle cx="32" cy="32" r="20" fill="#EF4444"/>
+          <path d="M32 20V32M32 40H32.02" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h2>Payment Failed</h2>
+      <p class="modal-message">
+        Your payment authorization was declined by the bank. Please verify your 3D Secure credentials and try again.
+      </p>
+
+      <div class="error-details">
+        <div class="error-row">
+          <span class="error-label">Error Code:</span>
+          <span class="error-value">{{ errorData.errorCode }}</span>
+        </div>
+        <div class="error-row">
+          <span class="error-label">Support ID:</span>
+          <span class="error-value">{{ errorData.supportId }}</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-danger" (click)="retryPayment()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M14 9C14 11.7614 11.7614 14 9 14C6.23858 14 4 11.7614 4 9C4 6.23858 6.23858 4 9 4C10.6356 4 12.0878 4.78555 13 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M13 3V6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Retry Payment
+        </button>
+        <button class="btn btn-secondary" (click)="cancelBooking()">Cancel Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Warning Modal -->
+  <div class="modal-overlay" *ngIf="activeModal === 'warning'" (click)="closeModal()">
+    <div class="modal warning" (click)="$event.stopPropagation()">
+      <div class="modal-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <path d="M32 8L56 52H8L32 8Z" fill="#FEF3C7"/>
+          <path d="M32 16L48 44H16L32 16Z" fill="#F59E0B"/>
+          <path d="M32 26V34M32 40H32.02" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h2>Cancel Booking?</h2>
+      <p class="modal-message">
+        Are you sure you want to cancel the booking for PNR <strong>{{ warningData.pnr }}</strong>?
+        This action is irreversible and subject to a <strong>{{ warningData.fee }} cancellation fee</strong>
+        per traveler as per the fare rules.
+      </p>
+
+      <div class="modal-actions vertical">
+        <button class="btn btn-secondary-outline" (click)="keepBooking()">Keep Booking</button>
+        <button class="btn btn-danger-solid" (click)="confirmCancellation()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 9L8 11L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Confirm Cancellation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

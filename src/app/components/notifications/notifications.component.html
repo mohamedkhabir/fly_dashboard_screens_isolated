@@ -1,0 +1,161 @@
+<div class="notifications-container">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
+          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Amadeus Portal</span>
+      </div>
+      <div class="header-search">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="#9CA3AF" stroke-width="1.5"/>
+          <path d="M13 13L17 17" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input type="text" placeholder="Search flights, PNR...">
+      </div>
+      <nav class="header-nav">
+        <a routerLink="/flight-search" class="nav-link" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/booking-confirmation" class="nav-link" routerLinkActive="active">Bookings</a>
+        <a routerLink="/wallet" class="nav-link" routerLinkActive="active">Wallet</a>
+        <a routerLink="/sales-reporting" class="nav-link" routerLinkActive="active">Reports</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button active">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11.73 15C11.5542 15.3031 11.3019 15.5547 10.9982 15.7295C10.6946 15.9044 10.3504 15.9965 10 15.9965C9.64964 15.9965 9.30541 15.9044 9.00179 15.7295C8.69818 15.5547 8.44583 15.3031 8.27 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="notification-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+        </button>
+        <button class="icon-button">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2C6 2 3 5 3 9C3 10 4 11 5 11C6 11 7 10 7 9C7 8 8 7 10 7C11 7 12 8 12 9C12 10 11 11 10 11C9 11 8 12 8 13V14M10 17H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="user-avatar">
+          <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%230D6EFD'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="notifications-main">
+    <div class="container">
+      <div class="page-title-section">
+        <div>
+          <h1>Notifications & Alerts</h1>
+          <p class="subtitle">Operational updates, financial alerts, and booking status for your agency.</p>
+        </div>
+        <button class="btn btn-secondary" (click)="markAllAsRead()" [disabled]="unreadCount === 0">
+          Mark all as read
+        </button>
+      </div>
+
+      <div class="notifications-content">
+        <div class="tabs-bar">
+          <button
+            class="tab-button"
+            [class.active]="activeTab === 'all'"
+            (click)="setTab('all')"
+          >
+            All Notifications
+          </button>
+          <button
+            class="tab-button"
+            [class.active]="activeTab === 'schedule'"
+            (click)="setTab('schedule')"
+          >
+            Schedule Changes
+          </button>
+          <button
+            class="tab-button"
+            [class.active]="activeTab === 'wallet'"
+            (click)="setTab('wallet')"
+          >
+            Wallet Alerts
+          </button>
+          <button
+            class="tab-button"
+            [class.active]="activeTab === 'booking'"
+            (click)="setTab('booking')"
+          >
+            Booking Updates
+          </button>
+        </div>
+
+        <div class="notifications-list">
+          <div
+            class="notification-card"
+            [class.unread]="!notification.isRead"
+            [attr.data-type]="notification.type"
+            *ngFor="let notification of filteredNotifications"
+            (click)="markAsRead(notification.id)"
+          >
+            <div class="notification-indicator" [ngClass]="notification.type"></div>
+
+            <div class="notification-icon" [ngClass]="notification.type">
+              <svg *ngIf="notification.icon === 'plane'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="currentColor"/>
+              </svg>
+              <svg *ngIf="notification.icon === 'wallet'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 10H21M7 6V4C7 3.44772 7.44772 3 8 3H16C16.5523 3 17 3.44772 17 4V6" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17" cy="14" r="1.5" fill="currentColor"/>
+              </svg>
+              <svg *ngIf="notification.icon === 'check'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="notification.icon === 'ticket'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 9V6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6V9M3 9C4.10457 9 5 9.89543 5 11C5 12.1046 4.10457 13 3 13M3 9V15M21 9C19.8954 9 19 9.89543 19 11C19 12.1046 19.8954 13 21 13M21 9V15M3 15V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V15M3 15C4.10457 15 5 14.1046 5 13C5 11.8954 4.10457 11 3 11M21 15C19.8954 15 19 14.1046 19 13C19 11.8954 19.8954 11 21 11" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+
+            <div class="notification-content">
+              <div class="notification-header">
+                <h3>{{ notification.title }}</h3>
+                <span class="notification-time">{{ notification.time }}</span>
+              </div>
+              <p class="notification-message">{{ notification.message }}</p>
+              <button
+                class="notification-action"
+                *ngIf="notification.actionLabel"
+                (click)="handleAction(notification); $event.stopPropagation()"
+              >
+                {{ notification.actionLabel }}
+              </button>
+            </div>
+
+            <div class="unread-dot" *ngIf="!notification.isRead"></div>
+          </div>
+
+          <div class="load-more-section" *ngIf="filteredNotifications.length > 0">
+            <button class="btn btn-outline" (click)="loadOlderNotifications()">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 3V15M9 15L5 11M9 15L13 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Load older notifications
+            </button>
+          </div>
+
+          <div class="empty-state" *ngIf="filteredNotifications.length === 0">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="30" fill="#F3F4F6"/>
+              <path d="M32 20V32L38 38" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h3>No notifications</h3>
+            <p>You're all caught up! No notifications in this category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

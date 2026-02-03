@@ -1,0 +1,130 @@
+<div class="login-container">
+  <header class="login-header">
+    <div class="header-content">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="6" fill="#0D6EFD"/>
+          <path d="M8 16L16 8L24 16L16 24L8 16Z" fill="white"/>
+        </svg>
+        <span class="logo-text">SkyGate B2B</span>
+      </div>
+      <div class="header-actions">
+        <span class="need-account">Need an account?</span>
+        <button class="btn btn-primary btn-sm" (click)="navigateToApply()">Apply Now</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="login-content">
+    <div class="login-card">
+      <div class="login-card-header">
+        <div class="lock-icon">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" fill="#E7F1FF"/>
+            <circle cx="32" cy="32" r="20" fill="#0D6EFD" opacity="0.1"/>
+            <path d="M32 20C28.69 20 26 22.69 26 26V28H22V44H42V28H38V26C38 22.69 35.31 20 32 20ZM32 24C33.1 24 34 24.9 34 26V28H30V26C30 24.9 30.9 24 32 24ZM26 32H38V40H26V32Z" fill="#0D6EFD"/>
+          </svg>
+        </div>
+        <h1 class="login-title">Agent Portal Login</h1>
+        <p class="login-subtitle">Secure access to Amadeus Global Distribution System</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label class="form-label">Agency ID</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 4H16V6H4V4ZM4 8H16V10H4V8ZM4 12H12V14H4V12Z" fill="#6B7280"/>
+            </svg>
+            <input
+              type="text"
+              class="form-control with-icon"
+              placeholder="e.g. AGENT-88291"
+              formControlName="agencyId"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Work Email</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2.5 5H17.5V15H2.5V5ZM4.5 7V13H15.5V7L10 11L4.5 7ZM4.5 5L10 9L15.5 5H4.5Z" fill="#6B7280"/>
+            </svg>
+            <input
+              type="email"
+              class="form-control with-icon"
+              placeholder="agent@company.com"
+              formControlName="workEmail"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="password-label-row">
+            <label class="form-label">Password</label>
+            <a href="javascript:void(0)" class="forgot-link" (click)="navigateToForgot()">Forgot Password?</a>
+          </div>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2C7.79 2 6 3.79 6 6V8H4V18H16V8H14V6C14 3.79 12.21 2 10 2ZM10 4C11.1 4 12 4.9 12 6V8H8V6C8 4.9 8.9 4 10 4ZM6 10H14V16H6V10Z" fill="#6B7280"/>
+            </svg>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control with-icon with-toggle"
+              placeholder="••••••••"
+              formControlName="password"
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              (click)="togglePasswordVisibility()"
+              tabindex="-1"
+            >
+              <svg *ngIf="!showPassword" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 5C5 5 2 10 2 10S5 15 10 15S18 10 18 10S15 5 10 5ZM10 13C8.34 13 7 11.66 7 10S8.34 7 10 7S13 8.34 13 10S11.66 13 10 13ZM10 9C9.45 9 9 9.45 9 10S9.45 11 10 11S11 10.55 11 10S10.55 9 10 9Z" fill="#9CA3AF"/>
+              </svg>
+              <svg *ngIf="showPassword" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2 2L18 18M10 7C11.66 7 13 8.34 13 10M7 10C7 11.66 8.34 13 10 13" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg login-button" [disabled]="!loginForm.valid">
+          <span>Secure Login</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 3L15 10L10 17M15 10H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="authorized-notice">
+          <span>AUTHORIZED USE ONLY</span>
+        </div>
+
+        <div class="security-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2L3 4V7C3 10.31 5.39 13.38 8 14C10.61 13.38 13 10.31 13 7V4L8 2Z" fill="#6B7280"/>
+          </svg>
+          <span>256-bit SSL Encrypted Connection</span>
+        </div>
+      </form>
+    </div>
+
+    <footer class="login-footer">
+      <div class="tech-partner">
+        <span class="partner-label">TECHNOLOGY PARTNER</span>
+        <span class="partner-name">Amadeus</span>
+      </div>
+      <div class="footer-links">
+        <a routerLink="/support">Help Center</a>
+        <a routerLink="/support">Terms of Service</a>
+        <a routerLink="/support">Privacy Policy</a>
+        <a routerLink="/support">System Status</a>
+      </div>
+      <div class="copyright">
+        © 2024 SkyGate Travel Group. All rights reserved. Access to this system is monitored.
+      </div>
+    </footer>
+  </div>
+</div>

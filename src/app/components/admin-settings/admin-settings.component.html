@@ -1,0 +1,278 @@
+<div class="admin-settings-container">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="6" fill="#0D6EFD"/>
+          <path d="M16 8L12 12H14V20H18V12H20L16 8Z" fill="white"/>
+          <rect x="10" y="22" width="12" height="2" fill="white"/>
+        </svg>
+        <span>Amadeus Admin</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <a routerLink="/dashboard" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="3" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="11" y="3" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="3" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+          <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+
+      <a routerLink="/bookings" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3 8H17" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Bookings</span>
+      </a>
+
+      <a routerLink="/flight-search" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M17 9L10 3L3 9L10 15L17 9Z" fill="currentColor"/>
+        </svg>
+        <span>Flights</span>
+      </a>
+
+      <a routerLink="/user-management" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M4 17C4 14.2386 6.23858 12 9 12H11C13.7614 12 16 14.2386 16 17" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Manage Users</span>
+      </a>
+
+      <a routerLink="/settings" class="nav-item" routerLinkActive="active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 7V10L13 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1>Global Fees & Subscriptions</h1>
+        <p class="subtitle">Configure markups, service fees, and models for non-IATA agencies.</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-secondary" (click)="viewHistory()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 5V9L12 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          View History
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="saveChanges()"
+          [disabled]="!hasUnsavedChanges"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M14 2H4C3.44772 2 3 2.44772 3 3V15C3 15.5523 3.44772 16 4 16H14C14.5523 16 15 15.5523 15 15V3C15 2.44772 14.5523 2 14 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 2V7H7V2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 12H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Save Changes
+        </button>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="metric-content">
+          <div class="metric-label">Fees Collected (MTD)</div>
+          <div class="metric-value">${{ feesCollected.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="metric-change positive">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 11V3M7 3L4 6M7 3L10 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>+{{ feesChange }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 7L12 3L21 7V13C21 17.97 16.84 22.74 12 24C7.16 22.74 3 17.97 3 13V7Z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="metric-content">
+          <div class="metric-label">Active Subscriptions</div>
+          <div class="metric-value">{{ activeSubscriptions.toLocaleString() }} <span class="metric-unit">Agencies</span></div>
+          <div class="metric-change positive">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 11V3M7 3L4 6M7 3L10 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>+{{ subscriptionsChange }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17" cy="12" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="metric-content">
+          <div class="metric-label">Pending Commissions</div>
+          <div class="metric-value">${{ pendingCommissions.toLocaleString('en-US', {minimumFractionDigits: 2}) }}</div>
+          <div class="metric-change negative">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 3V11M7 11L4 8M7 11L10 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>{{ commissionsChange }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Service Fees per Booking</h2>
+          <button class="info-button" title="Information about service fees">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 6V10M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Fixed Fee (per Passenger)</label>
+            <div class="input-group">
+              <span class="input-prefix">$</span>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="fixedFeePerPassenger"
+                (input)="onInputChange()"
+                step="0.01"
+              >
+            </div>
+            <p class="form-help">Charged for each passenger in a booking reference.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Percentage Markup</label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="percentageMarkup"
+                (input)="onInputChange()"
+                step="0.1"
+              >
+              <span class="input-suffix">%</span>
+            </div>
+            <p class="form-help">Percentage added to the total base fare + taxes from GDS.</p>
+          </div>
+        </div>
+
+        <div class="info-notice">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="#0D6EFD" stroke-width="1.5"/>
+            <path d="M9 5V9M9 13H9.01" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p><strong>Note:</strong> These values serve as the default global pricing and will be overridden by custom agency group settings.</p>
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Monthly Subscription</h2>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Base Monthly Fee</label>
+            <div class="input-group">
+              <span class="input-prefix">$</span>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="baseMonthlyFee"
+                (input)="onInputChange()"
+                step="1"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Billing Cycle</label>
+            <select
+              class="form-control"
+              [(ngModel)]="billingCycle"
+              (change)="onInputChange()"
+            >
+              <option value="every-1st">Every 1st of the month</option>
+              <option value="every-15th">Every 15th of the month</option>
+              <option value="anniversary">Anniversary date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-header">
+            <h2>Recharge Commission</h2>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Wallet Top-up Fee</label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="walletTopupFee"
+                (input)="onInputChange()"
+                step="0.1"
+              >
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [(ngModel)]="applyFeeToBankTransfers"
+                (change)="onInputChange()"
+              >
+              <span class="checkbox-text">Apply fee to Bank Transfers</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-card">
+        <div class="warning-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L22 20H2L12 2Z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M12 9V13M12 17H12.01" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="warning-content">
+          <h3>Careful: High-Impact Action</h3>
+          <p>Changes to these settings will affect all active bookings and future invoices globally for over 1,200 agencies. Ensure you have reviewed the financial impact before saving.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
