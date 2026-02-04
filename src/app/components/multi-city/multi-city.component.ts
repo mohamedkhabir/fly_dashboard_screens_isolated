@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 interface Flight {
   id: string;
@@ -21,7 +22,7 @@ interface Flight {
 @Component({
   selector: 'app-multi-city',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './multi-city.component.html',
   styleUrls: ['./multi-city.component.scss']
 })
