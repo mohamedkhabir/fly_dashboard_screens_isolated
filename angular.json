@@ -43,7 +43,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500GB",
+                  "maximumWarning": "50GB",
                   "maximumError": "100MB"
                 },
                 {
