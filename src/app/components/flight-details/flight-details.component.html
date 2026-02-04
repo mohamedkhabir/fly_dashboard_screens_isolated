@@ -1,351 +1,332 @@
-<div class="flight-details-container">
-  <header class="page-header">
-    <div class="header-content">
+<div class="flight-details-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
       <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
-          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M4 20L14 4L24 20H4Z" fill="#0D6EFD"/>
         </svg>
-        <span class="logo-text">B2B FlyEngine</span>
+        <span>B2B FlyEngine</span>
       </div>
-      <nav class="breadcrumb">
-        <a href="javascript:void(0)">Search Results</a>
-        <span class="separator">/</span>
-        <a href="javascript:void(0)">Flight Selection</a>
-        <span class="separator">/</span>
-        <span class="current">Flight Details & Rules</span>
+      <nav class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="#" class="active">Bookings</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
       </nav>
-      <div class="header-actions">
-        <button class="btn btn-secondary" (click)="downloadPDF()">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M9 2V10M9 10L12 7M9 10L6 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Download PDF
-        </button>
-        <button class="btn btn-secondary" (click)="shareDetails()">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="5" cy="9" r="2" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="13" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="13" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 8L11 6M7 10L11 12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          Share
-        </button>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 6.5C15 4.01472 12.7614 2 10 2C7.23858 2 5 4.01472 5 6.5C5 10.0833 3 11.5 3 11.5H17C17 11.5 15 10.0833 15 6.5Z" stroke="#6B7280" stroke-width="1.5"/>
+          <path d="M11.5 14.5C11.5 15.3284 10.8284 16 10 16C9.17157 16 8.5 15.3284 8.5 14.5" stroke="#6B7280" stroke-width="1.5"/>
+        </svg>
+      </button>
+      <div class="avatar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="7" r="4" stroke="#EF8B6E" stroke-width="1.5"/>
+          <path d="M3 18C3 14.134 6.13401 11 10 11C13.866 11 17 14.134 17 18" stroke="#EF8B6E" stroke-width="1.5"/>
+        </svg>
       </div>
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="main-content">
     <div class="container">
-      <div class="content-layout">
-        <div class="main-column">
-          <div class="flight-header-card">
-            <div class="route-display">
-              <h1>{{ flightInfo.route.from }} ({{ flightInfo.route.fromCode }}) <span class="arrow">→</span> {{ flightInfo.route.to }} ({{ flightInfo.route.toCode }})</h1>
-              <div class="flight-meta">
-                <span>{{ flightInfo.departure.date }}</span>
-                <span class="separator">•</span>
-                <span>1 Adult</span>
-                <span class="separator">•</span>
-                <span>{{ flightInfo.bookingClass }}</span>
-              </div>
-            </div>
-          </div>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="#">Search Results</a>
+        <span class="separator">/</span>
+        <a href="#">Flight Selection</a>
+        <span class="separator">/</span>
+        <span class="current">Flight Details & Rules</span>
+      </nav>
 
-          <div class="tabs-container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Flight Details & Fare Rules</h1>
+          <p class="subtitle">Review your itinerary and Amadeus fare conditions before proceeding.</p>
+        </div>
+        <div class="page-header-right">
+          <button class="btn btn-outline" (click)="downloadPDF()">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 12V14C3 14.5523 3.44772 15 4 15H14C14.5523 15 15 14.5523 15 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M9 3V10M9 10L6 7M9 10L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download PDF
+          </button>
+          <button class="btn btn-outline" (click)="shareDetails()">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="14" cy="4" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="14" cy="14" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="4" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.5 7.5L11.5 5M6.5 10.5L11.5 13" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Share
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Tabs -->
+          <div class="tabs-card">
             <div class="tabs-header">
               <button
-                class="tab-button"
+                class="tab-btn"
                 [class.active]="activeTab === 'itinerary'"
-                (click)="setTab('itinerary')"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M17 9L10 3L3 9L10 15L17 9Z" fill="currentColor"/>
+                (click)="setTab('itinerary')">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M14 6L9 2L4 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 12L9 16L14 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 Itinerary Details
               </button>
               <button
-                class="tab-button"
+                class="tab-btn"
                 [class.active]="activeTab === 'fare-rules'"
-                (click)="setTab('fare-rules')"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 2H15L18 5V17C18 17.5523 17.5523 18 17 18H5C4.44772 18 4 17.5523 4 17V3C4 2.44772 4.44772 2 5 2Z" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M15 2V5H18" stroke="currentColor" stroke-width="1.5"/>
+                (click)="setTab('fare-rules')">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M4 2H12L15 5V15C15 15.5523 14.5523 16 14 16H4C3.44772 16 3 15.5523 3 15V3C3 2.44772 3.44772 2 4 2Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 2V5H15" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 9H12M6 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
                 Fare Rules & Penalties
               </button>
             </div>
 
-            <div class="tab-content">
-              <div class="tab-panel" *ngIf="activeTab === 'itinerary'">
-                <div class="itinerary-section">
-                  <h2>Outbound: London to New York</h2>
-                  <p class="section-subtitle">Review your itinerary and Amadeus fare conditions before proceeding.</p>
+            <!-- Tab Content -->
+            <div class="tab-content" *ngIf="activeTab === 'itinerary'">
+              <!-- Flight Route Header -->
+              <div class="flight-route-header">
+                <div class="route-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 8L12 2L6 8" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 16L12 22L18 16" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h2>Outbound: {{ flightInfo.route.from }} ({{ flightInfo.route.fromCode }}) to {{ flightInfo.route.to }} ({{ flightInfo.route.toCode }})</h2>
+              </div>
 
-                  <div class="flight-timeline">
-                    <div class="timeline-point departure">
-                      <div class="point-marker">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="10" fill="#0D6EFD"/>
-                          <circle cx="12" cy="12" r="4" fill="white"/>
+              <!-- Flight Timeline -->
+              <div class="flight-timeline">
+                <div class="timeline-row">
+                  <div class="timeline-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-time">{{ flightInfo.departure.time }}</div>
+                    <div class="timeline-location">{{ flightInfo.departure.airport }} - T5</div>
+                  </div>
+                  <div class="timeline-right">
+                    <div class="timeline-time">{{ flightInfo.arrival.time }}</div>
+                    <div class="timeline-location">JFK Intl (JFK) - T7</div>
+                  </div>
+                </div>
+
+                <div class="flight-info-row">
+                  <div class="airline-info">
+                    <span class="airline-name">{{ flightInfo.airline }} • {{ flightInfo.flightNumber }}</span>
+                    <span class="aircraft-badge">{{ flightInfo.aircraft }}</span>
+                  </div>
+                </div>
+
+                <div class="duration-row">
+                  <div class="duration-item">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="6.5" stroke="#6B7280" stroke-width="1.5"/>
+                      <path d="M8 4.5V8L10.5 9.5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span>{{ flightInfo.duration }} duration</span>
+                  </div>
+                  <div class="duration-item">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <rect x="4" y="6" width="8" height="6" rx="1" stroke="#6B7280" stroke-width="1.5"/>
+                      <path d="M6 6V4C6 2.89543 6.89543 2 8 2C9.10457 2 10 2.89543 10 4V6" stroke="#6B7280" stroke-width="1.5"/>
+                    </svg>
+                    <span>{{ amenities.pitch }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Travel Time Info -->
+              <div class="travel-time-banner">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="#0D6EFD" stroke-width="1.5"/>
+                  <path d="M9 5V9L11.5 10.5" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Total travel time: 7h 55m. Non-stop flight.</span>
+              </div>
+
+              <!-- Baggage & Fare Rules Section -->
+              <div class="baggage-section">
+                <h3>Baggage & Fare Rules</h3>
+
+                <div class="baggage-grid">
+                  <!-- Baggage Allowance -->
+                  <div class="baggage-card">
+                    <div class="baggage-card-header">BAGGAGE ALLOWANCE</div>
+                    <div class="baggage-card-body">
+                      <div class="baggage-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <rect x="6" y="4" width="8" height="12" rx="1" stroke="#6B7280" stroke-width="1.5"/>
+                          <path d="M8 4V2M12 4V2" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+                          <path d="M6 8H14" stroke="#6B7280" stroke-width="1.5"/>
                         </svg>
+                        <span class="baggage-label">Checked-in baggage</span>
+                        <span class="baggage-value">{{ baggage.checkedIn }}</span>
                       </div>
-                      <div class="point-content">
-                        <div class="point-time">{{ flightInfo.departure.time }}</div>
-                        <div class="point-location">
-                          <strong>{{ flightInfo.departure.airport }}</strong>
-                        </div>
-                        <div class="point-details">
-                          {{ flightInfo.departure.terminal }} • {{ flightInfo.departure.date }}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="timeline-connector">
-                      <div class="connector-line"></div>
-                      <div class="flight-info-box">
-                        <div class="airline-header">
-                          <div class="airline-logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                              <circle cx="20" cy="20" r="18" fill="#E7F1FF"/>
-                              <path d="M28 20L20 12L12 20L20 28L28 20Z" fill="#0D6EFD"/>
-                            </svg>
-                          </div>
-                          <div class="airline-details">
-                            <div class="airline-name">{{ flightInfo.airline }}</div>
-                            <div class="flight-number">{{ flightInfo.flightNumber }} • {{ flightInfo.aircraft }}</div>
-                          </div>
-                        </div>
-
-                        <div class="flight-duration">
-                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="10" cy="10" r="8" stroke="#6B7280" stroke-width="1.5"/>
-                            <path d="M10 6V10L13 12" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
-                          </svg>
-                          <span>Duration: {{ flightInfo.duration }}</span>
-                        </div>
-
-                        <div class="flight-amenities">
-                          <div class="amenity" [class.available]="amenities.meal">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <path d="M3 2V8C3 9.10457 3.89543 10 5 10V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                              <path d="M15 2V6C15 7.10457 14.1046 8 13 8V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                            <span>{{ amenities.meal ? 'Meal Included' : 'No meal' }}</span>
-                          </div>
-                          <div class="amenity" [class.available]="amenities.entertainment">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <rect x="2" y="4" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                              <path d="M7 8L11 10L7 12V8Z" fill="currentColor"/>
-                            </svg>
-                            <span>Entertainment</span>
-                          </div>
-                          <div class="amenity" [class.available]="amenities.power">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <path d="M9 2L6 9H12L9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>Power Outlet</span>
-                          </div>
-                          <div class="amenity" [class.available]="amenities.wifi">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <path d="M2 7C5.31371 3.68629 11.6863 3.68629 15 7M5 10C6.65685 8.34315 9.34315 8.34315 11 10M8 13H8.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                            <span>{{ amenities.wifi ? 'Free Wi-Fi' : 'No Wi-Fi' }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="timeline-point arrival">
-                      <div class="point-marker">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2L6 8L12 14L18 8L12 2Z" fill="#0D6EFD"/>
-                          <circle cx="12" cy="12" r="3" fill="white"/>
+                      <div class="baggage-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <rect x="5" y="6" width="10" height="8" rx="1" stroke="#6B7280" stroke-width="1.5"/>
+                          <path d="M8 6V4C8 3.44772 8.44772 3 9 3H11C11.5523 3 12 3.44772 12 4V6" stroke="#6B7280" stroke-width="1.5"/>
                         </svg>
-                      </div>
-                      <div class="point-content">
-                        <div class="point-time">{{ flightInfo.arrival.time }}</div>
-                        <div class="point-location">
-                          <strong>{{ flightInfo.arrival.airport }}</strong>
-                        </div>
-                        <div class="point-details">
-                          {{ flightInfo.arrival.terminal }} • {{ flightInfo.arrival.date }}
-                        </div>
+                        <span class="baggage-label">Cabin baggage</span>
+                        <span class="baggage-value">{{ baggage.cabin }}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div class="info-boxes">
-                    <div class="info-box">
-                      <div class="info-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <rect x="5" y="3" width="8" height="12" rx="1" stroke="#0D6EFD" stroke-width="2"/>
-                          <path d="M7 3V2C7 1.44772 7.44772 1 8 1H10C10.5523 1 11 1.44772 11 2V3" stroke="#0D6EFD" stroke-width="2"/>
+                  <!-- Change & Cancellation -->
+                  <div class="baggage-card">
+                    <div class="baggage-card-header">CHANGE & CANCELLATION</div>
+                    <div class="baggage-card-body">
+                      <div class="baggage-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M4 13V15C4 15.5523 4.44772 16 5 16H15C15.5523 16 16 15.5523 16 15V13" stroke="#6B7280" stroke-width="1.5"/>
+                          <path d="M7 10L10 7L13 10M10 7V15" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
+                        <span class="baggage-label">Change Fee</span>
+                        <span class="baggage-value">USD 150.00</span>
                       </div>
-                      <div class="info-content">
-                        <h3>Baggage & Fare Rules</h3>
-                        <div class="baggage-details">
-                          <div class="baggage-item">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <rect x="5" y="3" width="8" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                            <span><strong>Checked-in baggage:</strong> {{ baggage.checkedIn }}</span>
-                          </div>
-                          <div class="baggage-item">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                              <rect x="4" y="4" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                            <span><strong>Cabin baggage:</strong> {{ baggage.cabin }}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="info-box">
-                      <div class="info-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="10" stroke="#10B981" stroke-width="2"/>
-                          <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+                      <div class="baggage-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <circle cx="10" cy="10" r="6" stroke="#6B7280" stroke-width="1.5"/>
+                          <path d="M7 7L13 13M13 7L7 13" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
-                      </div>
-                      <div class="info-content">
-                        <h3>Instant Confirmation</h3>
-                        <p>GDS inventory is held for 30 minutes until payment. Instant ticketing upon confirmation.</p>
+                        <span class="baggage-label">Cancellation Fee</span>
+                        <span class="baggage-value red">Non-refundable</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="tab-panel" *ngIf="activeTab === 'fare-rules'">
-                <div class="fare-rules-section">
-                  <div class="fare-header">
-                    <h2>Amadeus Fare Basis: {{ fareRules.fareBasis }}</h2>
-                    <div class="fare-meta">
-                      <span>Ticket Designator: {{ fareRules.ticketDesignator }}</span>
-                    </div>
-                  </div>
+              <!-- Amadeus Fare Basis -->
+              <div class="fare-basis-card">
+                <div class="fare-basis-header">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="3" y="4" width="14" height="12" rx="1" stroke="#6B7280" stroke-width="1.5"/>
+                    <path d="M7 8H13M7 11H11" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <span>AMADEUS FARE BASIS: {{ flightInfo.fareBasis }}</span>
+                </div>
+                <ul class="fare-rules-list">
+                  <li>CANCELLATIONS: TICKET IS NON-REFUNDABLE IN CASE OF CANCEL/NO-SHOW.</li>
+                  <li>CHANGES: ANY TIME CHANGES PERMITTED FOR A FEE OF USD 150.00 FOR REISSUE/REVALIDATION.</li>
+                  <li>MINIMUM STAY: NO MINIMUM STAY REQUIREMENTS.</li>
+                  <li>NAME CHANGES ARE NOT PERMITTED. TICKETS ARE NON-TRANSFERABLE.</li>
+                </ul>
+              </div>
+            </div>
 
-                  <div class="fare-calculation">
-                    <h3>FARE CALCULATION</h3>
-                    <div class="calculation-text">{{ fareRules.fareCalculation }}</div>
-                  </div>
+            <!-- Fare Rules Tab Content -->
+            <div class="tab-content" *ngIf="activeTab === 'fare-rules'">
+              <div class="fare-rules-content">
+                <h2>Fare Rules & Penalties</h2>
+                <p class="fare-rules-subtitle">Detailed fare conditions from Amadeus GDS</p>
 
-                  <div class="rules-grid">
-                    <div class="rule-card">
-                      <div class="rule-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="2"/>
-                          <path d="M9 9L15 15M15 9L9 15" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <h3>CANCELLATIONS</h3>
-                      </div>
-                      <ul class="rule-list">
-                        <li *ngFor="let rule of fareRules.cancellations">{{ rule }}</li>
-                      </ul>
-                    </div>
+                <div class="fare-rule-section">
+                  <h4>CANCELLATIONS</h4>
+                  <ul>
+                    <li *ngFor="let rule of fareRules.cancellations">{{ rule }}</li>
+                  </ul>
+                </div>
 
-                    <div class="rule-card">
-                      <div class="rule-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="9" stroke="#F59E0B" stroke-width="2"/>
-                          <path d="M12 7V12L15 14" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <h3>CHANGES / REISSUE / REVALIDATION</h3>
-                      </div>
-                      <ul class="rule-list">
-                        <li *ngFor="let rule of fareRules.changes">{{ rule }}</li>
-                      </ul>
-                    </div>
+                <div class="fare-rule-section">
+                  <h4>CHANGES / REISSUE / REVALIDATION</h4>
+                  <ul>
+                    <li *ngFor="let rule of fareRules.changes">{{ rule }}</li>
+                  </ul>
+                </div>
 
-                    <div class="rule-card">
-                      <div class="rule-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <circle cx="12" cy="12" r="9" stroke="#10B981" stroke-width="2"/>
-                          <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <h3>REFUNDS</h3>
-                      </div>
-                      <ul class="rule-list">
-                        <li *ngFor="let rule of fareRules.refunds">{{ rule }}</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="fare-glossary-link">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <circle cx="10" cy="10" r="8" stroke="#0D6EFD" stroke-width="1.5"/>
-                      <path d="M10 6V10M10 14H10.01" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <p>Not sure what these terms mean? <a href="javascript:void(0)" (click)="openFareGlossary()">View Fare Glossary</a></p>
-                  </div>
+                <div class="fare-rule-section">
+                  <h4>REFUNDS</h4>
+                  <ul>
+                    <li *ngFor="let rule of fareRules.refunds">{{ rule }}</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <aside class="side-column">
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Price Summary Card -->
           <div class="price-card">
-            <div class="price-header">
-              <h2>Price Summary</h2>
-            </div>
+            <h3>Price Summary</h3>
 
             <div class="price-rows">
               <div class="price-row">
-                <span class="row-label">Base Fare (1x Adult)</span>
-                <span class="row-value">USD {{ pricing.baseFare.toFixed(2) }}</span>
+                <span>Base Fare (1x Adult)</span>
+                <span>USD {{ pricing.baseFare.toFixed(2) }}</span>
               </div>
               <div class="price-row">
-                <span class="row-label">Taxes & Surcharges</span>
-                <span class="row-value">USD {{ pricing.taxes.toFixed(2) }}</span>
+                <span>Taxes & Surcharges</span>
+                <span>USD {{ pricing.taxes.toFixed(2) }}</span>
               </div>
               <div class="price-row markup">
-                <span class="row-label">Agency Markup</span>
-                <span class="row-value green">USD {{ pricing.agencyMarkup.toFixed(2) }}</span>
-              </div>
-              <div class="price-row total">
-                <span class="row-label">Total Amount</span>
-                <span class="row-value">USD {{ pricing.totalAmount.toFixed(2) }}</span>
+                <span>Agency Markup</span>
+                <span class="green">USD {{ pricing.agencyMarkup.toFixed(2) }}</span>
               </div>
             </div>
 
-            <div class="price-note">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="7" stroke="#6B7280" stroke-width="1.5"/>
-                <path d="M8 4V8M8 11H8.01" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span>BY CONTINUING, YOU AGREE TO THE FARE CONDITIONS AND AGENCY TERMS OF SERVICE.</span>
+            <div class="price-total">
+              <span class="total-label">TOTAL AMOUNT</span>
+              <span class="total-value">USD {{ pricing.totalAmount.toFixed(2) }}</span>
             </div>
 
-            <button class="btn btn-primary btn-lg" (click)="continueToPassengerInfo()">
+            <button class="btn btn-primary btn-block" (click)="continueToPassengerInfo()">
               Continue to Passenger Info
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M7 4L12 9L7 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M7 4L12 9L7 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-          </div>
 
-          <div class="help-links">
-            <button class="help-link" (click)="openTicketingPolicy()">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M5 2H13L17 6V15C17 15.5523 16.5523 16 16 16H5C4.44772 16 4 15.5523 4 15V3C4 2.44772 4.44772 2 5 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <p class="terms-note">BY CONTINUING, YOU AGREE TO THE FARE CONDITIONS AND AGENCY TERMS OF SERVICE.</p>
+
+            <!-- Instant Confirmation -->
+            <div class="instant-confirm">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="8" fill="#10B981"/>
+                <path d="M6.5 10L9 12.5L13.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Ticketing Policy</span>
-            </button>
-            <button class="help-link" (click)="openFareGlossary()">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M9 5V9M9 13H9.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span>Support Desk</span>
-            </button>
+              <div class="instant-confirm-text">
+                <span class="title">Instant Confirmation</span>
+                <span class="desc">GDS inventory is held for 30 minutes until payment.</span>
+              </div>
+            </div>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+        <circle cx="4" cy="4" r="4" fill="#10B981"/>
+      </svg>
+      <span>SECURE AMADEUS SSL CONNECTION</span>
+    </div>
+    <div class="footer-right">
+      <a href="#">Fare Glossary</a>
+      <a href="#">Ticketing Policy</a>
+      <a href="#">Support Desk</a>
+    </div>
+  </footer>
 </div>

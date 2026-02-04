@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -16,19 +16,18 @@ export class RegistrationComponent implements OnInit {
   progressPercentage = 50;
 
   // Form data
-  agencyName = 'Global Travel Solutions LLC';
+  agencyName = '';
   country = '';
   iataNumber = '';
-  website = 'https://www.youragency.com';
+  website = '';
 
-  contactName = 'John Doe';
-  contactEmail = 'john@agency.com';
+  contactName = '';
+  contactEmail = '';
 
   businessLicenseFile: File | null = null;
   taxIdFile: File | null = null;
 
   acceptTerms = false;
-  acceptPrivacy = false;
 
   constructor() {}
 
@@ -38,6 +37,20 @@ export class RegistrationComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
+
+      // Validate file size (5MB max)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB limit. Please choose a smaller file.');
+        return;
+      }
+
+      // Validate file type
+      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Invalid file type. Please upload PDF, JPG, or PNG files only.');
+        return;
+      }
+
       if (fileType === 'license') {
         this.businessLicenseFile = file;
       } else {
@@ -67,16 +80,40 @@ export class RegistrationComponent implements OnInit {
       this.currentStep--;
       this.progressPercentage = ((this.currentStep - 1) / (this.totalSteps - 1)) * 100;
     }
+    console.log('Going back to previous step');
   }
 
   submitRegistration(): void {
-    if (!this.acceptTerms || !this.acceptPrivacy) {
-      alert('Please accept the Terms of Service and Privacy Policy to continue.');
+    // Validate required fields
+    if (!this.agencyName.trim()) {
+      alert('Please enter your agency legal name.');
       return;
     }
 
-    if (!this.businessLicenseFile || !this.taxIdFile) {
-      alert('Please upload all required documents.');
+    if (!this.country) {
+      alert('Please select your country of registration.');
+      return;
+    }
+
+    if (!this.contactName.trim()) {
+      alert('Please enter the contact full name.');
+      return;
+    }
+
+    if (!this.contactEmail.trim()) {
+      alert('Please enter a professional email address.');
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.contactEmail)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (!this.acceptTerms) {
+      alert('Please accept the Terms of Service and Privacy Policy to continue.');
       return;
     }
 
@@ -96,7 +133,7 @@ export class RegistrationComponent implements OnInit {
 
   contactSupport(): void {
     console.log('Opening contact support');
-    alert('Support contact opened');
+    alert('Support contact opened - Email: support@amadeus-b2b.com');
   }
 
   openFAQ(): void {

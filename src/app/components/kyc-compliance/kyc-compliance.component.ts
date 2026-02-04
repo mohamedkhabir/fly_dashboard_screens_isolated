@@ -73,35 +73,71 @@ export class KycComplianceComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialize component
+    this.calculateStats();
+  }
+
+  calculateStats(): void {
+    this.totalDocuments = this.documents.length;
+    this.verifiedDocuments = this.documents.filter(d => d.status === 'verified').length;
+    this.pendingDocuments = this.documents.filter(d =>
+      d.status === 'pending' || d.status === 'rejected' || d.status === 'not-submitted'
+    ).length;
   }
 
   downloadStatusReport(): void {
     console.log('Downloading status report...');
-    // Implement download logic
+    alert('Downloading KYC Status Report as PDF...');
   }
 
   downloadDocument(doc: Document): void {
     console.log('Downloading document:', doc.name);
-    // Implement download logic
+    alert(`Downloading ${doc.name} (${doc.fileInfo?.type}, ${doc.fileInfo?.size})`);
   }
 
   viewDetails(doc: Document): void {
     console.log('Viewing details for:', doc.name);
-    // Implement view details logic
+    alert(`Viewing details for ${doc.name}\nStatus: Pending Review\nSubmitted: ${doc.lastUpdated}`);
   }
 
   reuploadDocument(doc: Document): void {
     console.log('Re-uploading document:', doc.name);
-    // Implement re-upload logic
+    // Open file picker
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.pdf,.jpg,.jpeg,.png';
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (file) {
+        console.log('Selected file:', file.name);
+        alert(`Re-uploading ${doc.name} with file: ${file.name}`);
+      }
+    };
+    input.click();
   }
 
   uploadDocument(doc: Document): void {
     console.log('Uploading document:', doc.name);
-    // Implement upload logic
+    // Open file picker
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.pdf,.jpg,.jpeg,.png';
+    input.onchange = (event: any) => {
+      const file = event.target.files[0];
+      if (file) {
+        // Validate file size (10MB max)
+        if (file.size > 10 * 1024 * 1024) {
+          alert('File size exceeds 10MB limit. Please choose a smaller file.');
+          return;
+        }
+        console.log('Selected file:', file.name);
+        alert(`Uploading ${doc.name} with file: ${file.name}`);
+      }
+    };
+    input.click();
   }
 
   chatWithCompliance(): void {
     console.log('Opening compliance chat...');
-    // Implement chat logic
+    alert('Opening chat with Compliance Team...\nAvailable Mon-Fri, 9AM-6PM EST');
   }
 }

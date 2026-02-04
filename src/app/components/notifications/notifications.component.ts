@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 interface Notification {
   id: string;
@@ -87,6 +87,7 @@ export class NotificationsComponent implements OnInit {
 
   markAllAsRead(): void {
     this.notifications.forEach(n => n.isRead = true);
+    console.log('All notifications marked as read');
   }
 
   markAsRead(id: string): void {
@@ -99,9 +100,53 @@ export class NotificationsComponent implements OnInit {
   handleAction(notification: Notification): void {
     console.log('Action clicked for:', notification.title);
     this.markAsRead(notification.id);
+
+    // Handle different action types
+    switch (notification.type) {
+      case 'schedule':
+        console.log('Opening schedule change review...');
+        alert(`Reviewing schedule change for ${notification.title}`);
+        break;
+      case 'wallet':
+        console.log('Opening wallet top-up...');
+        alert('Redirecting to wallet top-up...');
+        break;
+      case 'booking':
+        console.log('Opening booking details...');
+        alert(`Opening details for ${notification.title}`);
+        break;
+      default:
+        break;
+    }
   }
 
   loadOlderNotifications(): void {
     console.log('Loading older notifications...');
+
+    // Simulate loading older notifications
+    const olderNotifications: Notification[] = [
+      {
+        id: '5',
+        type: 'booking',
+        icon: 'check',
+        title: 'Booking Confirmed: K7M2P1',
+        message: 'PNR [K7M2P1] for Michael Brown successfully issued. E-tickets sent.',
+        time: '2 DAYS AGO',
+        isRead: true,
+        actionLabel: 'Details'
+      },
+      {
+        id: '6',
+        type: 'schedule',
+        icon: 'plane',
+        title: 'Flight BA245 Gate Change',
+        message: 'Gate changed from A12 to B7 for BA245 (LHR to JFK). Please inform passengers.',
+        time: '3 DAYS AGO',
+        isRead: true,
+        actionLabel: 'View Details'
+      }
+    ];
+
+    this.notifications = [...this.notifications, ...olderNotifications];
   }
 }

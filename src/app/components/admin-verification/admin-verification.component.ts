@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 interface LegalDocument {
   id: string;
@@ -70,7 +70,7 @@ export class AdminVerificationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // Auto-select the pending document
+    // Auto-select the pending document for review
     this.selectedDocument = this.documents.find(d => d.status === 'pending') || null;
     if (this.selectedDocument) {
       this.showDocumentPreview = true;
@@ -80,40 +80,56 @@ export class AdminVerificationComponent implements OnInit {
   viewDocument(doc: LegalDocument): void {
     this.selectedDocument = doc;
     this.showDocumentPreview = true;
+    console.log('Viewing document:', doc.name);
   }
 
   fullScreenPreview(): void {
     console.log('Opening full screen preview');
-    alert('Full screen preview opened');
+    alert('Opening document in full screen mode...');
   }
 
   printDocument(): void {
     console.log('Printing document');
-    alert('Print dialog opened');
+    alert('Opening print dialog...');
   }
 
   downloadDossier(): void {
-    console.log('Downloading dossier');
-    alert('Agency dossier download initiated');
+    console.log('Downloading agency dossier');
+    alert('Downloading complete agency dossier as PDF...');
   }
 
   viewAuditLog(): void {
     console.log('Opening audit log');
-    alert('Audit log opened');
+    alert('Opening audit log for Skybound Travels...');
   }
 
   approveAgency(): void {
-    if (confirm('Are you sure you want to approve this agency? This will grant them immediate access to Amadeus inventory.')) {
-      console.log('Agency approved');
-      alert('Agency approved successfully!');
+    const confirm = window.confirm(
+      'Are you sure you want to approve Skybound Travels?\n\n' +
+      'This will:\n' +
+      '• Grant immediate access to Amadeus GDS inventory\n' +
+      '• Enable ticket issuance capabilities\n' +
+      '• Activate the Pro Plan subscription\n\n' +
+      'This action will be logged in the audit trail.'
+    );
+
+    if (confirm) {
+      console.log('Agency approved with notes:', this.adminNotes);
+      alert('✓ Skybound Travels has been approved!\n\nNotification sent to j.picard@skybound-travels.com');
     }
   }
 
   rejectAgency(): void {
-    const reason = prompt('Please provide a reason for rejection:');
+    const reason = window.prompt(
+      'Please provide a reason for rejection:\n\n' +
+      'This will be sent to the agency contact.',
+      'Document quality issue - please re-upload a clearer image of the ID document.'
+    );
+
     if (reason) {
       console.log('Agency rejected with reason:', reason);
-      alert('Agency has been rejected. Notification sent.');
+      console.log('Admin notes:', this.adminNotes);
+      alert('✗ Skybound Travels application has been rejected.\n\nReason sent to agency: ' + reason);
     }
   }
 }

@@ -1,147 +1,180 @@
-<div class="kyc-container">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h3>Agency Verification</h3>
-      <p class="agency-id">Non-IATA Corporate ID: #AM-99281</p>
-    </div>
-
-    <nav class="sidebar-nav">
-      <a routerLink="/kyc-compliance" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <rect x="11" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <rect x="3" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <rect x="11" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+<div class="kyc-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="#0D6EFD"/>
+          <path d="M8 12l4 4 8-8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>Overview</span>
-      </a>
-
-      <a routerLink="/kyc-compliance/documents" class="nav-item" routerLinkActive="active">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 2C5.44772 2 5 2.44772 5 3V17C5 17.5523 5.44772 18 6 18H14C14.5523 18 15 17.5523 15 17V6L11 2H6Z" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M11 2V6H15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <span>Documents</span>
-      </a>
-
-      <a routerLink="/kyc-compliance/bank-details" class="nav-item" routerLinkActive="active">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 2L2 6V8H18V6L10 2Z" fill="currentColor"/>
-          <rect x="4" y="8" width="2" height="6" fill="currentColor"/>
-          <rect x="9" y="8" width="2" height="6" fill="currentColor"/>
-          <rect x="14" y="8" width="2" height="6" fill="currentColor"/>
-          <rect x="2" y="14" width="16" height="2" fill="currentColor"/>
-        </svg>
-        <span>Bank Details</span>
-      </a>
-
-      <a routerLink="/kyc-compliance/tax-info" class="nav-item" routerLinkActive="active">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="4" width="14" height="13" rx="1" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M7 3V5M13 3V5M3 8H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span>Tax Info</span>
-      </a>
-
-      <a routerLink="/security" class="nav-item" routerLinkActive="active">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 2L4 5V9C4 13.42 7.03 17.34 10 18C12.97 17.34 16 13.42 16 9V5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <span>Security</span>
-      </a>
-    </nav>
-
-    <div class="sidebar-help">
-      <div class="help-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="10" stroke="#0D6EFD" stroke-width="2"/>
-          <path d="M12 8V12M12 16H12.01" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <span>Amadeus B2B Portal</span>
       </div>
-      <h4>COMPLIANCE NOTE</h4>
-      <p>All mandatory documents must be verified before flight issuance is enabled on your account.</p>
     </div>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Page Header -->
-    <div class="page-header">
-      <div class="header-text">
-        <h1>KYC Compliance & Verification</h1>
-        <p class="subtitle">Manage and track your legal documentation for platform access. High-tier access requires all mandatory documents to be 'Verified'.</p>
-      </div>
-      <button class="btn-download" (click)="downloadStatusReport()">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 2V10M9 10L12 7M9 10L6 7M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <div class="header-center">
+      <nav class="nav-links">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/bookings">Bookings</a>
+        <a routerLink="/kyc-compliance" class="active">KYC Compliance</a>
+        <a routerLink="/billing">Billing</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M11.73 15C11.5542 15.3031 11.3019 15.5547 10.9982 15.7295C10.6946 15.9044 10.3504 15.9965 10 15.9965C9.64964 15.9965 9.30541 15.9044 9.00179 15.7295C8.69818 15.5547 8.44583 15.3031 8.27 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        Download Status Report
       </button>
-    </div>
-
-    <!-- Stats Grid -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon gray">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-label">Total Documents</div>
-          <div class="stat-value">{{ totalDocuments }}</div>
-        </div>
-      </div>
-
-      <div class="stat-card success">
-        <div class="stat-icon green">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-            <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-label">Verified</div>
-          <div class="stat-value">{{ verifiedDocuments }}</div>
-        </div>
-      </div>
-
-      <div class="stat-card warning">
-        <div class="stat-icon yellow">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-            <path d="M12 8V12M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="stat-content">
-          <div class="stat-label">Pending Action</div>
-          <div class="stat-value">{{ pendingDocuments }}</div>
-        </div>
+      <button class="icon-btn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="1.5" fill="currentColor"/>
+          <circle cx="10" cy="5" r="1.5" fill="currentColor"/>
+          <circle cx="10" cy="15" r="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+      <div class="avatar">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User">
       </div>
     </div>
+  </header>
 
-    <!-- Documents Section -->
-    <div class="documents-section">
-      <div class="section-header">
-        <h2>Required Documentation</h2>
-        <span class="live-badge">
-          <span class="pulse-dot"></span>
-          Updates live
-        </span>
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>Agency Verification</h3>
+        <p class="agency-id">Non-IATA Corporate ID: #AM-99281</p>
       </div>
 
-      <!-- Documents Table -->
-      <div class="table-container">
+      <nav class="sidebar-nav">
+        <a class="nav-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="11" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="3" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="11" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+        <a class="nav-item active">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M6 2H12L16 6V16C16 17.1046 15.1046 18 14 18H6C4.89543 18 4 17.1046 4 16V4C4 2.89543 4.89543 2 6 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 2V6H16" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Documents</span>
+        </a>
+        <a class="nav-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 6L10 2L17 6V8H3V6Z" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="5" y="8" width="2" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="9" y="8" width="2" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="13" y="8" width="2" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="3" y="14" width="14" height="2" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Bank Details</span>
+        </a>
+        <a class="nav-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 2V5M13 2V5M3 8H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Tax Info</span>
+        </a>
+        <a class="nav-item">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2L4 5V9C4 13.42 6.87 17.17 10 18C13.13 17.17 16 13.42 16 9V5L10 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Security</span>
+        </a>
+      </nav>
+
+      <div class="compliance-note">
+        <div class="note-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="7" stroke="#0D6EFD" stroke-width="1.5"/>
+            <path d="M9 5V9M9 13H9.01" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>COMPLIANCE NOTE</h4>
+        <p>All mandatory documents must be verified before flight issuance is enabled on your account.</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>KYC Compliance & Verification</h1>
+          <p class="subtitle">Manage and track your legal documentation for platform access. High-tier access requires all mandatory documents to be 'Verified'.</p>
+        </div>
+        <button class="btn-download" (click)="downloadStatusReport()">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12M9 3V11M9 11L6 8M9 11L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download Status Report
+        </button>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-info">
+            <span class="stat-label">Total Documents</span>
+            <span class="stat-value">{{ totalDocuments }}</span>
+          </div>
+          <div class="stat-icon gray">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 7H21M3 12H21M3 17H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <span class="stat-label">Verified</span>
+            <span class="stat-value green">{{ verifiedDocuments }}</span>
+          </div>
+          <div class="stat-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="stat-card pending">
+          <div class="stat-info">
+            <span class="stat-label">Pending Action</span>
+            <span class="stat-value orange">{{ pendingDocuments }}</span>
+          </div>
+          <div class="stat-icon orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 8V12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents Section -->
+      <div class="documents-section">
+        <div class="section-header">
+          <h2>Required Documentation</h2>
+          <span class="live-badge">Updates live</span>
+        </div>
+
+        <!-- Documents Table -->
         <table class="documents-table">
           <thead>
           <tr>
-            <th class="th-document">DOCUMENT NAME</th>
-            <th class="th-requirement">REQUIREMENT</th>
-            <th class="th-status">STATUS</th>
-            <th class="th-updated">LAST UPDATED</th>
-            <th class="th-action">ACTION</th>
+            <th>DOCUMENT NAME</th>
+            <th>REQUIREMENT</th>
+            <th>STATUS</th>
+            <th>LAST UPDATED</th>
+            <th>ACTION</th>
           </tr>
           </thead>
           <tbody>
@@ -154,107 +187,96 @@
                     'icon-red': doc.status === 'rejected',
                     'icon-gray': doc.status === 'not-submitted'
                   }">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 2C5.44772 2 5 2.44772 5 3V17C5 17.5523 5.44772 18 6 18H14C14.5523 18 15 17.5523 15 17V6L11 2H6Z" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M11 2V6H15" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <!-- Building icon for Business License -->
+                  <svg *ngIf="doc.name === 'Business License'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="3" y="6" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M6 9V13M9 9V13M12 9V13M3 6L9 2L15 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <!-- Card icon for Bank Details -->
+                  <svg *ngIf="doc.name === 'Bank Details'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="2" y="4" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M2 7H16" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="4" y="10" width="4" height="2" rx="0.5" stroke="currentColor" stroke-width="1"/>
+                  </svg>
+                  <!-- ID icon for Identity Proof -->
+                  <svg *ngIf="doc.name === 'Identity Proof'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="2" y="4" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="6.5" cy="8.5" r="2" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M10 7H14M10 10H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <!-- Document icon for Tax Certificate -->
+                  <svg *ngIf="doc.name === 'Tax Certificate'" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M5 2H11L14 5V15C14 15.5523 13.5523 16 13 16H5C4.44772 16 4 15.5523 4 15V3C4 2.44772 4.44772 2 5 2Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M11 2V5H14" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M7 9H11M7 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                   </svg>
                 </div>
                 <div class="doc-text">
-                  <div class="doc-title">{{ doc.name }}</div>
-                  <div class="doc-meta" *ngIf="doc.fileInfo">
-                    Uploaded {{ doc.lastUpdated }} • {{ doc.fileInfo.type }} ({{ doc.fileInfo.size }})
-                  </div>
-                  <div class="doc-rejection" *ngIf="doc.status === 'rejected' && doc.rejectionReason">
-                    {{ doc.rejectionReason }}
-                  </div>
+                  <span class="doc-name">{{ doc.name }}</span>
+                  <span class="doc-error" *ngIf="doc.status === 'rejected' && doc.rejectionReason">{{ doc.rejectionReason }}</span>
                 </div>
               </div>
             </td>
-
-            <td class="td-requirement">
-                <span class="requirement-badge" [class.badge-mandatory]="doc.requirement === 'MANDATORY'">
+            <td>
+                <span class="requirement-badge" [class.mandatory]="doc.requirement === 'MANDATORY'">
                   {{ doc.requirement }}
                 </span>
             </td>
-
-            <td class="td-status">
-              <div class="status-badge" [ngClass]="{
+            <td>
+                <span class="status-badge" [ngClass]="{
                   'status-verified': doc.status === 'verified',
                   'status-pending': doc.status === 'pending',
                   'status-rejected': doc.status === 'rejected',
                   'status-not-submitted': doc.status === 'not-submitted'
                 }">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle *ngIf="doc.status === 'verified'" cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                  <path *ngIf="doc.status === 'verified'" d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-                  <circle *ngIf="doc.status === 'pending'" cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                  <path *ngIf="doc.status === 'pending'" d="M8 4V8L11 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-                  <circle *ngIf="doc.status === 'rejected'" cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                  <path *ngIf="doc.status === 'rejected'" d="M6 6L10 10M10 6L6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-                  <circle *ngIf="doc.status === 'not-submitted'" cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
-                </svg>
-                <span *ngIf="doc.status === 'verified'">Verified</span>
-                <span *ngIf="doc.status === 'pending'">Pending Review</span>
-                <span *ngIf="doc.status === 'rejected'">Rejected</span>
-                <span *ngIf="doc.status === 'not-submitted'">Not Submitted</span>
-              </div>
+                  <svg *ngIf="doc.status === 'verified'" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M4.5 7L6.5 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg *ngIf="doc.status === 'pending'" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M7 4V7L9 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg *ngIf="doc.status === 'rejected'" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M5 5L9 9M9 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg *ngIf="doc.status === 'not-submitted'" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                  </svg>
+                  <span *ngIf="doc.status === 'verified'">Verified</span>
+                  <span *ngIf="doc.status === 'pending'">Pending Review</span>
+                  <span *ngIf="doc.status === 'rejected'">Rejected</span>
+                  <span *ngIf="doc.status === 'not-submitted'">Not Submitted</span>
+                </span>
             </td>
-
-            <td class="td-updated">{{ doc.lastUpdated }}</td>
-
+            <td class="td-date">{{ doc.lastUpdated }}</td>
             <td class="td-action">
-              <button
-                class="action-btn btn-primary"
-                *ngIf="doc.status === 'verified'"
-                (click)="downloadDocument(doc)"
-              >
-                Download
-              </button>
-              <button
-                class="action-btn btn-secondary"
-                *ngIf="doc.status === 'pending'"
-                (click)="viewDetails(doc)"
-              >
-                View Details
-              </button>
-              <button
-                class="action-btn btn-danger"
-                *ngIf="doc.status === 'rejected'"
-                (click)="reuploadDocument(doc)"
-              >
-                Re-upload
-              </button>
-              <button
-                class="action-btn btn-secondary"
-                *ngIf="doc.status === 'not-submitted'"
-                (click)="uploadDocument(doc)"
-              >
-                Upload
-              </button>
+              <button class="action-btn link" *ngIf="doc.status === 'verified'" (click)="downloadDocument(doc)">Download</button>
+              <button class="action-btn link" *ngIf="doc.status === 'pending'" (click)="viewDetails(doc)">View Details</button>
+              <button class="action-btn primary" *ngIf="doc.status === 'rejected'" (click)="reuploadDocument(doc)">Re-upload</button>
+              <button class="action-btn outline" *ngIf="doc.status === 'not-submitted'" (click)="uploadDocument(doc)">Upload</button>
             </td>
           </tr>
           </tbody>
         </table>
 
         <div class="table-footer">
-          <div class="table-footer-text">Showing 4 of 4 documents</div>
-          <div class="table-footer-security">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 1L2 3V5.5C2 8.21 4.01 10.67 6 11C7.99 10.67 10 8.21 10 5.5V3L6 1Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+          <span class="footer-count">Showing 4 of 4 documents</span>
+          <span class="footer-security">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 1L2 3V5.5C2 8.21 4.01 10.67 6 11C7.99 10.67 10 8.21 10 5.5V3L6 1Z" stroke="currentColor" stroke-width="1"/>
             </svg>
             Secure 256-bit encryption
-          </div>
+          </span>
         </div>
       </div>
 
       <!-- Info Boxes -->
       <div class="info-boxes">
-        <div class="info-box guidelines-box">
+        <div class="info-box guidelines">
           <div class="info-header">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <circle cx="10" cy="10" r="8" stroke="#0D6EFD" stroke-width="1.5"/>
               <path d="M10 6V10M10 14H10.01" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
@@ -262,60 +284,53 @@
           </div>
           <ul class="guidelines-list">
             <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="8" r="7" stroke="#10B981" stroke-width="1.5"/>
-                <path d="M5 8L7 10L11 6" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="#10B981" stroke-width="1.5"/>
+                <path d="M5.5 8L7.5 10L10.5 6.5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Files must be in PDF, JPG, or PNG format.</span>
+              Files must be in PDF, JPG, or PNG format.
             </li>
             <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="8" r="7" stroke="#10B981" stroke-width="1.5"/>
-                <path d="M5 8L7 10L11 6" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="#10B981" stroke-width="1.5"/>
+                <path d="M5.5 8L7.5 10L10.5 6.5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Maximum file size per document is 10MB.</span>
+              Maximum file size per document is 10MB.
             </li>
             <li>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="8" r="7" stroke="#10B981" stroke-width="1.5"/>
-                <path d="M5 8L7 10L11 6" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="#10B981" stroke-width="1.5"/>
+                <path d="M5.5 8L7.5 10L10.5 6.5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Images must be clear and all text must be legible.</span>
+              Images must be clear and all text must be legible.
             </li>
           </ul>
         </div>
 
-        <div class="info-box help-box">
+        <div class="info-box help">
           <div class="help-content">
-            <div class="help-icon-large">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="20" fill="#E7F1FF"/>
-                <path d="M24 16V24M24 32H24.02" stroke="#0D6EFD" stroke-width="2.5" stroke-linecap="round"/>
+            <div class="help-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16" fill="#E0F2FE"/>
+                <path d="M20 12C17 12 15 14 15 16.5C15 17.5 16 18 16 18M20 24V24.01M20 21C20 19 22 18 22 16.5C22 14.5 20.5 13 20 13" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
             <h3>Need assistance?</h3>
             <p>Our compliance team is ready to help you with document verification.</p>
-            <button class="btn-chat" (click)="chatWithCompliance()">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 2H14V10H5L2 13V2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              </svg>
-              Chat with Compliance
-            </button>
+            <button class="btn-chat" (click)="chatWithCompliance()">Chat with Compliance</button>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Footer -->
-  <footer class="kyc-footer">
-    <div class="footer-content">
-      <p class="footer-copyright">© 2023 Amadeus IT Group SA. All rights reserved.</p>
-      <div class="footer-links">
-        <a routerLink="/privacy">Privacy Policy</a>
-        <a routerLink="/terms">Terms of Service</a>
-        <a routerLink="/compliance">Compliance Standards</a>
-      </div>
+  <footer class="footer">
+    <span class="copyright">© 2023 Amadeus IT Group SA. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Compliance Standards</a>
     </div>
   </footer>
 </div>

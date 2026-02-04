@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 interface Passenger {
   id: string;
@@ -13,7 +14,7 @@ interface Passenger {
 @Component({
   selector: 'app-cancellation-refund',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './cancellation.component.html',
   styleUrls: ['./cancellation.component.scss']
 })
@@ -22,23 +23,28 @@ export class CancellationComponent implements OnInit {
   bookingStatus = 'Confirmed';
   ticketDate = '22 Nov 2023';
   originalBooking = 1240.00;
+  confirmationChecked = false;
+
+  // Expose Math to template
+  Math = Math;
 
   flightInfo = {
     departure: {
       city: 'London',
       code: 'LHR',
-      airport: 'Heathrow Airport, Terminal 5',
+      airport: 'London Heathrow',
       date: '24 Nov 2023',
       time: '10:20'
     },
     arrival: {
       city: 'New York',
       code: 'JFK',
-      airport: 'John F. Kennedy Intl Airport, Terminal 7',
+      airport: 'New York JFK',
       date: '24 Nov 2023',
       time: '13:45'
     },
     airline: 'British Airways',
+    airlineCode: 'BA',
     class: 'Economy (Q)'
   };
 
@@ -46,21 +52,21 @@ export class CancellationComponent implements OnInit {
     {
       id: '1',
       name: 'DOE/JOHN MR',
-      ticketNumber: '232-9283471650',
+      ticketNumber: '232-1928374650',
       refundAmount: 620.00,
       selected: true
     },
     {
       id: '2',
       name: 'DOE/JANE MRS',
-      ticketNumber: '232-9283471651',
+      ticketNumber: '232-1928374651',
       refundAmount: 620.00,
       selected: true
     }
   ];
 
   cancellationMethod: 'refund' | 'void' = 'refund';
-  voidWindowExpired = false;
+  voidWindowExpired = true;
 
   refundBreakdown = {
     baseFareRefund: 1020.00,
@@ -98,6 +104,9 @@ export class CancellationComponent implements OnInit {
   }
 
   setMethod(method: 'refund' | 'void'): void {
+    if (method === 'void' && this.voidWindowExpired) {
+      return;
+    }
     this.cancellationMethod = method;
   }
 
@@ -106,6 +115,10 @@ export class CancellationComponent implements OnInit {
     const totalCount = this.passengers.length;
 
     if (selectedCount === 0) {
+      this.refundBreakdown.baseFareRefund = 0;
+      this.refundBreakdown.taxRefund = 0;
+      this.refundBreakdown.cancellationPenalty = 0;
+      this.refundBreakdown.serviceFee = 0;
       this.refundBreakdown.estimatedRefund = 0;
       return;
     }
@@ -136,6 +149,11 @@ export class CancellationComponent implements OnInit {
   confirmCancellation(): void {
     if (this.selectedPassengers.length === 0) {
       alert('Please select at least one passenger to cancel.');
+      return;
+    }
+
+    if (!this.confirmationChecked) {
+      alert('Please confirm that you have read the fare rules.');
       return;
     }
 

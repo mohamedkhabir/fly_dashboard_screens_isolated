@@ -1,161 +1,181 @@
-<div class="notifications-container">
-  <header class="page-header">
-    <div class="header-content">
+<div class="notifications-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
       <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
-          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" fill="#0D6EFD"/>
+          <path d="M12 6L16 8V12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12V8L12 6Z" fill="white"/>
         </svg>
-        <span class="logo-text">Amadeus Portal</span>
+        <span>Amadeus Portal</span>
       </div>
-      <div class="header-search">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <circle cx="9" cy="9" r="6" stroke="#9CA3AF" stroke-width="1.5"/>
-          <path d="M13 13L17 17" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="5" stroke="#9CA3AF" stroke-width="1.5"/>
+          <path d="M11 11L14 14" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <input type="text" placeholder="Search flights, PNR...">
       </div>
-      <nav class="header-nav">
-        <a routerLink="/flight-search" class="nav-link" routerLinkActive="active">Dashboard</a>
-        <a routerLink="/booking-confirmation" class="nav-link" routerLinkActive="active">Bookings</a>
-        <a routerLink="/wallet" class="nav-link" routerLinkActive="active">Wallet</a>
-        <a routerLink="/sales-reporting" class="nav-link" routerLinkActive="active">Reports</a>
+    </div>
+    <div class="header-right">
+      <nav class="nav-links">
+        <a routerLink="/flight-search" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/booking-confirmation" routerLinkActive="active">Bookings</a>
+        <a routerLink="/wallet" routerLinkActive="active">Wallet</a>
+        <a routerLink="/sales-reporting" routerLinkActive="active">Reports</a>
       </nav>
-      <div class="header-actions">
-        <button class="icon-button active">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M11.73 15C11.5542 15.3031 11.3019 15.5547 10.9982 15.7295C10.6946 15.9044 10.3504 15.9965 10 15.9965C9.64964 15.9965 9.30541 15.9044 9.00179 15.7295C8.69818 15.5547 8.44583 15.3031 8.27 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span class="notification-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
-        </button>
-        <button class="icon-button">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2C6 2 3 5 3 9C3 10 4 11 5 11C6 11 7 10 7 9C7 8 8 7 10 7C11 7 12 8 12 9C12 10 11 11 10 11C9 11 8 12 8 13V14M10 17H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="header-icons">
+        <button class="icon-btn active">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M13.5 6.375C13.5 5.18153 13.0259 4.03693 12.182 3.18198C11.3381 2.32704 10.2065 1.84375 9.025 1.84375C7.84346 1.84375 6.71186 2.32704 5.86796 3.18198C5.02406 4.03693 4.55 5.18153 4.55 6.375C4.55 10.5 2.8 11.625 2.8 11.625H15.25C15.25 11.625 13.5 10.5 13.5 6.375Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.0538 14.4375C9.91SEG1 14.7037 9.70584 14.9284 9.44965 15.0899C9.19347 15.2514 8.90004 15.3438 8.6 15.3438C8.29996 15.3438 8.00653 15.2514 7.75035 15.0899C7.49416 14.9284 7.28399 14.7037 7.14625 14.4375" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button class="icon-button">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <button class="icon-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+            <circle cx="9" cy="4" r="1.5" fill="currentColor"/>
+            <circle cx="9" cy="14" r="1.5" fill="currentColor"/>
           </svg>
         </button>
-        <div class="user-avatar">
-          <img src="data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='18' r='18' fill='%230D6EFD'/%3E%3Ctext x='18' y='23' text-anchor='middle' fill='white' font-size='14' font-weight='600'%3EU%3C/text%3E%3C/svg%3E" alt="User">
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User">
         </div>
       </div>
     </div>
   </header>
 
-  <main class="notifications-main">
+  <!-- Main Content -->
+  <main class="main-content">
     <div class="container">
-      <div class="page-title-section">
-        <div>
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
           <h1>Notifications & Alerts</h1>
           <p class="subtitle">Operational updates, financial alerts, and booking status for your agency.</p>
         </div>
-        <button class="btn btn-secondary" (click)="markAllAsRead()" [disabled]="unreadCount === 0">
+        <button class="btn btn-primary" (click)="markAllAsRead()" [disabled]="unreadCount === 0">
           Mark all as read
         </button>
       </div>
 
-      <div class="notifications-content">
-        <div class="tabs-bar">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'all'"
+          (click)="setTab('all')">
+          All Notifications
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'schedule'"
+          (click)="setTab('schedule')">
+          Schedule Changes
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'wallet'"
+          (click)="setTab('wallet')">
+          Wallet Alerts
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'booking'"
+          (click)="setTab('booking')">
+          Booking Updates
+        </button>
+      </div>
+
+      <!-- Notifications List -->
+      <div class="notifications-list">
+        <div
+          class="notification-card"
+          *ngFor="let notification of filteredNotifications"
+          [class.unread]="!notification.isRead"
+          [attr.data-type]="notification.type"
+          (click)="markAsRead(notification.id)">
+
+          <!-- Left Border Indicator -->
+          <div class="notification-border" [ngClass]="notification.type"></div>
+
+          <!-- Icon -->
+          <div class="notification-icon" [ngClass]="notification.type">
+            <!-- Schedule/Plane Icon -->
+            <svg *ngIf="notification.type === 'schedule'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 13.333V11.667L10.833 7.5V2.917C10.833 2.227 10.273 1.667 9.583 1.667C8.893 1.667 8.333 2.227 8.333 2.917V7.5L1.667 11.667V13.333L8.333 11.25V15.833L6.667 17.083V18.333L9.583 17.5L12.5 18.333V17.083L10.833 15.833V11.25L17.5 13.333Z" fill="currentColor"/>
+            </svg>
+            <!-- Wallet Icon -->
+            <svg *ngIf="notification.type === 'wallet'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="2" y="5" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 8H18" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="14.5" cy="11.5" r="1.5" fill="currentColor"/>
+            </svg>
+            <!-- Booking/Check Icon -->
+            <svg *ngIf="notification.type === 'booking' && notification.icon === 'check'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" fill="currentColor"/>
+              <path d="M6.5 10L9 12.5L13.5 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <!-- Info/Ticket Icon -->
+            <svg *ngIf="notification.type === 'booking' && notification.icon === 'ticket'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="7" cy="10" r="1" fill="currentColor"/>
+              <circle cx="10" cy="10" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+
+          <!-- Content -->
+          <div class="notification-content">
+            <div class="notification-header">
+              <div class="notification-title-row">
+                <h3>{{ notification.title }}</h3>
+                <span class="unread-dot" *ngIf="!notification.isRead"></span>
+              </div>
+              <span class="notification-time">{{ notification.time }}</span>
+            </div>
+            <p class="notification-message">{{ notification.message }}</p>
+          </div>
+
+          <!-- Action Button -->
           <button
-            class="tab-button"
-            [class.active]="activeTab === 'all'"
-            (click)="setTab('all')"
-          >
-            All Notifications
-          </button>
-          <button
-            class="tab-button"
-            [class.active]="activeTab === 'schedule'"
-            (click)="setTab('schedule')"
-          >
-            Schedule Changes
-          </button>
-          <button
-            class="tab-button"
-            [class.active]="activeTab === 'wallet'"
-            (click)="setTab('wallet')"
-          >
-            Wallet Alerts
-          </button>
-          <button
-            class="tab-button"
-            [class.active]="activeTab === 'booking'"
-            (click)="setTab('booking')"
-          >
-            Booking Updates
+            class="notification-action"
+            [class.primary]="notification.type === 'schedule'"
+            *ngIf="notification.actionLabel"
+            (click)="handleAction(notification); $event.stopPropagation()">
+            {{ notification.actionLabel }}
           </button>
         </div>
 
-        <div class="notifications-list">
-          <div
-            class="notification-card"
-            [class.unread]="!notification.isRead"
-            [attr.data-type]="notification.type"
-            *ngFor="let notification of filteredNotifications"
-            (click)="markAsRead(notification.id)"
-          >
-            <div class="notification-indicator" [ngClass]="notification.type"></div>
-
-            <div class="notification-icon" [ngClass]="notification.type">
-              <svg *ngIf="notification.icon === 'plane'" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2C10.67 2 10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="currentColor"/>
-              </svg>
-              <svg *ngIf="notification.icon === 'wallet'" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-                <path d="M3 10H21M7 6V4C7 3.44772 7.44772 3 8 3H16C16.5523 3 17 3.44772 17 4V6" stroke="currentColor" stroke-width="2"/>
-                <circle cx="17" cy="14" r="1.5" fill="currentColor"/>
-              </svg>
-              <svg *ngIf="notification.icon === 'check'" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <svg *ngIf="notification.icon === 'ticket'" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M3 9V6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6V9M3 9C4.10457 9 5 9.89543 5 11C5 12.1046 4.10457 13 3 13M3 9V15M21 9C19.8954 9 19 9.89543 19 11C19 12.1046 19.8954 13 21 13M21 9V15M3 15V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V15M3 15C4.10457 15 5 14.1046 5 13C5 11.8954 4.10457 11 3 11M21 15C19.8954 15 19 14.1046 19 13C19 11.8954 19.8954 11 21 11" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-
-            <div class="notification-content">
-              <div class="notification-header">
-                <h3>{{ notification.title }}</h3>
-                <span class="notification-time">{{ notification.time }}</span>
-              </div>
-              <p class="notification-message">{{ notification.message }}</p>
-              <button
-                class="notification-action"
-                *ngIf="notification.actionLabel"
-                (click)="handleAction(notification); $event.stopPropagation()"
-              >
-                {{ notification.actionLabel }}
-              </button>
-            </div>
-
-            <div class="unread-dot" *ngIf="!notification.isRead"></div>
-          </div>
-
-          <div class="load-more-section" *ngIf="filteredNotifications.length > 0">
-            <button class="btn btn-outline" (click)="loadOlderNotifications()">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M9 3V15M9 15L5 11M9 15L13 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Load older notifications
-            </button>
-          </div>
-
-          <div class="empty-state" *ngIf="filteredNotifications.length === 0">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="30" fill="#F3F4F6"/>
-              <path d="M32 20V32L38 38" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+        <!-- Load More -->
+        <div class="load-more" *ngIf="filteredNotifications.length > 0">
+          <button class="btn-load-more" (click)="loadOlderNotifications()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h3>No notifications</h3>
-            <p>You're all caught up! No notifications in this category.</p>
-          </div>
+            Load older notifications
+          </button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="filteredNotifications.length === 0">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" fill="#F3F4F6"/>
+            <path d="M32 20V32L40 36" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <h3>No notifications</h3>
+          <p>You're all caught up! No notifications in this category.</p>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="copyright">© 2024 AMADEUS PORTAL FOR NON-IATA AGENCIES</span>
+    <div class="footer-links">
+      <a href="#">SUPPORT</a>
+      <a href="#">TERMS</a>
+      <a href="#">PRIVACY</a>
+    </div>
+  </footer>
 </div>

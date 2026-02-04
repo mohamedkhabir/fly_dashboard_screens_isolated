@@ -28,7 +28,7 @@ export class FlightDetailsComponent implements OnInit {
       time: '13:40',
       date: 'Oct 24, 2023',
       terminal: 'Terminal 7',
-      airport: 'John F. Kennedy Intl (JFK)'
+      airport: 'JFK Intl (JFK)'
     },
     airline: 'British Airways',
     flightNumber: 'BA117',
@@ -39,8 +39,8 @@ export class FlightDetailsComponent implements OnInit {
   };
 
   baggage = {
-    checkedIn: '1x 23 kg',
-    cabin: '1x 8 kg'
+    checkedIn: '1 × 23 kg',
+    cabin: '1 × 8 kg'
   };
 
   amenities = {

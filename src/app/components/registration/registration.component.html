@@ -1,178 +1,131 @@
-<div class="registration-container">
-  <div class="registration-layout">
-    <aside class="info-sidebar">
-      <div class="logo-section">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="20" fill="#0D6EFD"/>
-          <path d="M24 12L18 16L24 20L30 16L24 12Z" fill="white"/>
-          <path d="M18 20V28L24 32V24L18 20Z" fill="white" opacity="0.6"/>
-          <path d="M30 20V28L24 32V24L30 20Z" fill="white" opacity="0.8"/>
+<div class="registration-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" fill="#0D6EFD"/>
+          <path d="M12 6L16 8V12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12V8L12 6Z" fill="white"/>
         </svg>
-        <h1>Amadeus B2B</h1>
+        <span>Amadeus B2B</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </nav>
+      <button class="btn-login">Login</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Register New Agency</h1>
+        <p class="subtitle">Complete the form below to start booking flights via Amadeus portal.</p>
       </div>
 
-      <div class="benefits-list">
-        <h3>What you'll get:</h3>
-        <div class="benefit-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#D1FAE5"/>
-            <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <div class="benefit-text">
-            <strong>Global Flight Inventory</strong>
-            <p>Access to Amadeus GDS with real-time availability</p>
-          </div>
+      <!-- Progress Section -->
+      <div class="progress-card">
+        <div class="progress-header">
+          <span class="progress-title">Registration Progress</span>
+          <span class="step-badge">Step {{ currentStep }} of {{ totalSteps }}</span>
         </div>
-
-        <div class="benefit-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#D1FAE5"/>
-            <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <div class="benefit-text">
-            <strong>Instant Ticket Issuance</strong>
-            <p>Book and issue tickets immediately upon verification</p>
-          </div>
-        </div>
-
-        <div class="benefit-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#D1FAE5"/>
-            <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <div class="benefit-text">
-            <strong>24/7 Support</strong>
-            <p>Dedicated support team for all booking inquiries</p>
-          </div>
-        </div>
-
-        <div class="benefit-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" fill="#D1FAE5"/>
-            <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          <div class="benefit-text">
-            <strong>Competitive Pricing</strong>
-            <p>Access to wholesale rates and agency commissions</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="help-section">
-        <h4>Need Help?</h4>
-        <button class="help-button" (click)="contactSupport()">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M3 8L10 12L17 8" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          Contact Support
-        </button>
-        <button class="help-button" (click)="openFAQ()">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M10 6V10M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Registration FAQ
-        </button>
-      </div>
-    </aside>
-
-    <main class="form-main">
-      <div class="form-header">
-        <div class="header-top">
-          <h2>Register New Agency</h2>
-          <div class="step-indicator">
-            <span class="step-text">Step {{ currentStep }} of {{ totalSteps }}</span>
-          </div>
-        </div>
-        <p class="header-subtitle">Complete the form below to start booking flights via Amadeus portal.</p>
-
         <div class="progress-bar">
-          <div class="progress-track">
-            <div class="progress-fill" [style.width.%]="progressPercentage"></div>
-          </div>
-          <div class="progress-label">
-            <span>Next: Upload KYC Documents</span>
-            <span class="progress-percent">{{ progressPercentage }}% Complete</span>
-          </div>
+          <div class="progress-fill" [style.width.%]="progressPercentage"></div>
+        </div>
+        <div class="progress-footer">
+          <span class="progress-next">Next: Upload KYC Documents</span>
+          <span class="progress-percent">{{ progressPercentage }}% Complete</span>
         </div>
       </div>
 
+      <!-- Registration Form -->
       <form class="registration-form">
-        <section class="form-section">
+        <!-- Agency Identity Section -->
+        <div class="form-section">
           <div class="section-header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="5" width="18" height="15" rx="2" stroke="#0D6EFD" stroke-width="2"/>
-              <path d="M3 9H21" stroke="#0D6EFD" stroke-width="2"/>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="2" y="4" width="16" height="12" rx="1" stroke="#0D6EFD" stroke-width="1.5"/>
+              <path d="M2 7H18" stroke="#0D6EFD" stroke-width="1.5"/>
+              <rect x="4" y="10" width="4" height="3" rx="0.5" stroke="#0D6EFD" stroke-width="1.5"/>
             </svg>
             <h3>Agency Identity</h3>
           </div>
 
           <div class="form-grid">
-            <div class="form-group full-width">
+            <div class="form-group">
               <label class="form-label">
                 Agency Legal Name <span class="required">*</span>
               </label>
               <input
                 type="text"
-                class="form-control"
+                class="form-input"
                 [(ngModel)]="agencyName"
                 name="agencyName"
-                placeholder="e.g., Global Travel Solutions LLC"
-              >
+                placeholder="e.g. Global Travel Solutions LLC">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                IATA Number
+                <span class="info-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="#9CA3AF" stroke-width="1.5"/>
+                    <path d="M7 4V7M7 10H7.01" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </label>
+              <input
+                type="text"
+                class="form-input"
+                [(ngModel)]="iataNumber"
+                name="iataNumber"
+                placeholder="7-digit IATA code (if any)">
             </div>
 
             <div class="form-group">
               <label class="form-label">
                 Country of Registration <span class="required">*</span>
               </label>
-              <select class="form-control" [(ngModel)]="country" name="country">
-                <option value="">Select country</option>
-                <option value="US">United States</option>
-                <option value="UK">United Kingdom</option>
-                <option value="CA">Canada</option>
-                <option value="AU">Australia</option>
-                <option value="FR">France</option>
-              </select>
+              <div class="select-wrapper">
+                <select class="form-input" [(ngModel)]="country" name="country">
+                  <option value="">Select country</option>
+                  <option value="US">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="AU">Australia</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                </select>
+                <svg class="select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M3 4.5L6 7.5L9 4.5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label">
-                IATA Number
-                <span class="optional-badge">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M8 4V8M8 12H8.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </span>
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="iataNumber"
-                name="iataNumber"
-                placeholder="7-digit IATA code (if any)"
-              >
-            </div>
-
-            <div class="form-group full-width">
               <label class="form-label">Agency Website</label>
               <input
                 type="url"
-                class="form-control"
+                class="form-input"
                 [(ngModel)]="website"
                 name="website"
-                placeholder="https://www.youragency.com"
-              >
+                placeholder="https://www.youragency.com">
             </div>
           </div>
-        </section>
+        </div>
 
-        <section class="form-section">
+        <!-- Primary Contact Section -->
+        <div class="form-section">
           <div class="section-header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="8" r="4" stroke="#0D6EFD" stroke-width="2"/>
-              <path d="M6 21C6 17.6863 8.68629 15 12 15C15.3137 15 18 17.6863 18 21" stroke="#0D6EFD" stroke-width="2"/>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="6" r="3.5" stroke="#0D6EFD" stroke-width="1.5"/>
+              <path d="M4 17C4 13.6863 6.68629 11 10 11C13.3137 11 16 13.6863 16 17" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
             <h3>Primary Contact</h3>
           </div>
@@ -184,11 +137,10 @@
               </label>
               <input
                 type="text"
-                class="form-control"
+                class="form-input"
                 [(ngModel)]="contactName"
                 name="contactName"
-                placeholder="John Doe"
-              >
+                placeholder="John Doe">
             </div>
 
             <div class="form-group">
@@ -197,20 +149,21 @@
               </label>
               <input
                 type="email"
-                class="form-control"
+                class="form-input"
                 [(ngModel)]="contactEmail"
                 name="contactEmail"
-                placeholder="john@agency.com"
-              >
+                placeholder="john&#64;agency.com">
             </div>
           </div>
-        </section>
+        </div>
 
-        <section class="form-section">
+        <!-- KYC Documentation Section -->
+        <div class="form-section">
           <div class="section-header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M8 2H16L22 8V20C22 21.1046 21.1046 22 20 22H8C6.89543 22 6 21.1046 6 20V4C6 2.89543 6.89543 2 8 2Z" stroke="#0D6EFD" stroke-width="2"/>
-              <path d="M16 2V8H22" stroke="#0D6EFD" stroke-width="2"/>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M6 2H12L16 6V16C16 17.1046 15.1046 18 14 18H6C4.89543 18 4 17.1046 4 16V4C4 2.89543 4.89543 2 6 2Z" stroke="#0D6EFD" stroke-width="1.5"/>
+              <path d="M12 2V6H16" stroke="#0D6EFD" stroke-width="1.5"/>
+              <path d="M10 10V14M8 12H12" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
             <h3>KYC Documentation</h3>
           </div>
@@ -220,99 +173,59 @@
           </p>
 
           <div class="upload-grid">
-            <div class="upload-card">
-              <div class="upload-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect x="8" y="6" width="16" height="20" rx="2" stroke="#6B7280" stroke-width="2"/>
-                  <path d="M12 10H20M12 14H20M12 18H16" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h4>Trade License / Incorporation Certificate</h4>
-              <p>Click to browse or drag & drop</p>
-
+            <!-- Trade License Upload -->
+            <div class="upload-card" (click)="triggerFileInput('license-input')">
               <input
                 type="file"
                 id="license-input"
                 accept=".pdf,.jpg,.jpeg,.png"
                 (change)="onFileSelect($event, 'license')"
-                style="display: none;"
-              >
+                style="display: none;">
 
-              <button
-                type="button"
-                class="upload-button"
-                *ngIf="!businessLicenseFile"
-                (click)="triggerFileInput('license-input')"
-              >
-                Click to browse or drag & drop
-              </button>
-
-              <div class="uploaded-file" *ngIf="businessLicenseFile">
-                <div class="file-info">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M6 2H14L18 6V16C18 17.1046 17.1046 18 16 18H6C4.89543 18 4 17.1046 4 16V4C4 2.89543 4.89543 2 6 2Z" stroke="#10B981" stroke-width="1.5"/>
-                  </svg>
-                  <span>{{ businessLicenseFile.name }}</span>
-                </div>
-                <button
-                  type="button"
-                  class="remove-file-button"
-                  (click)="removeFile('license')"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="upload-card">
-              <div class="upload-icon">
+              <div class="upload-icon" *ngIf="!businessLicenseFile">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect x="6" y="8" width="20" height="16" rx="2" stroke="#6B7280" stroke-width="2"/>
-                  <circle cx="22" cy="16" r="2" fill="#6B7280"/>
+                  <path d="M16 8V24M8 16H24" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
                 </svg>
               </div>
-              <h4>Tax ID Card / VAT Registration</h4>
-              <p>Click to browse or drag & drop</p>
+              <div class="upload-icon uploaded" *ngIf="businessLicenseFile">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" fill="#D1FAE5"/>
+                  <path d="M11 16L14.5 19.5L21 12.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Trade License / Incorporation Certificate</h4>
+              <p *ngIf="!businessLicenseFile">Click to browse or drag & drop</p>
+              <p class="file-name" *ngIf="businessLicenseFile">{{ businessLicenseFile.name }}</p>
+            </div>
 
+            <!-- Tax ID Upload -->
+            <div class="upload-card" (click)="triggerFileInput('taxid-input')">
               <input
                 type="file"
                 id="taxid-input"
                 accept=".pdf,.jpg,.jpeg,.png"
                 (change)="onFileSelect($event, 'taxId')"
-                style="display: none;"
-              >
+                style="display: none;">
 
-              <button
-                type="button"
-                class="upload-button"
-                *ngIf="!taxIdFile"
-                (click)="triggerFileInput('taxid-input')"
-              >
-                Click to browse or drag & drop
-              </button>
-
-              <div class="uploaded-file" *ngIf="taxIdFile">
-                <div class="file-info">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M6 2H14L18 6V16C18 17.1046 17.1046 18 16 18H6C4.89543 18 4 17.1046 4 16V4C4 2.89543 4.89543 2 6 2Z" stroke="#10B981" stroke-width="1.5"/>
-                  </svg>
-                  <span>{{ taxIdFile.name }}</span>
-                </div>
-                <button
-                  type="button"
-                  class="remove-file-button"
-                  (click)="removeFile('taxId')"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </button>
+              <div class="upload-icon" *ngIf="!taxIdFile">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect x="6" y="8" width="20" height="16" rx="2" stroke="#6B7280" stroke-width="1.5"/>
+                  <rect x="18" y="12" width="4" height="4" rx="1" fill="#6B7280"/>
+                </svg>
               </div>
+              <div class="upload-icon uploaded" *ngIf="taxIdFile">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <circle cx="16" cy="16" r="12" fill="#D1FAE5"/>
+                  <path d="M11 16L14.5 19.5L21 12.5" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Tax ID Card / VAT Registration</h4>
+              <p *ngIf="!taxIdFile">Click to browse or drag & drop</p>
+              <p class="file-name" *ngIf="taxIdFile">{{ taxIdFile.name }}</p>
             </div>
           </div>
 
+          <!-- Info Note -->
           <div class="info-note">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <circle cx="9" cy="9" r="7" stroke="#0D6EFD" stroke-width="1.5"/>
@@ -320,42 +233,58 @@
             </svg>
             <p>Our verification team will review these documents within 24-48 business hours. Ensure all scans are clear and readable to avoid delays in your account activation.</p>
           </div>
-        </section>
+        </div>
 
-        <section class="form-section">
-          <div class="terms-section">
-            <label class="checkbox-label">
-              <input
-                type="checkbox"
-                [(ngModel)]="acceptTerms"
-                name="acceptTerms"
-              >
-              <span class="checkbox-text">
-                I agree to the <a routerLink="/support" class="link">Terms of Service</a> and <a routerLink="/support" class="link">Privacy Policy</a> of Amadeus B2B.
-              </span>
-            </label>
-          </div>
-        </section>
+        <!-- Terms Section -->
+        <div class="terms-section">
+          <label class="checkbox-label">
+            <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">
+              I agree to the <a routerLink="/support" class="link">Terms of Service</a> and <a routerLink="/support" class="link">Privacy Policy</a> of Amadeus B2B.
+            </span>
+          </label>
+        </div>
 
+        <!-- Form Actions -->
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" (click)="goBack()">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M11 14L6 9L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Back to Previous
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="submitRegistration()"
-          >
+          <button type="button" class="btn btn-primary" (click)="submitRegistration()">
             Submit Registration
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M7 4L12 9L7 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
         </div>
       </form>
-    </main>
-  </div>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <a href="#" (click)="contactSupport(); $event.preventDefault()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 4V8L10.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Contact Support
+        </a>
+        <a href="#" (click)="openFAQ(); $event.preventDefault()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 4V8M8 11H8.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Registration FAQ
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>© 2024 AMADEUS IT GROUP. ALL RIGHTS RESERVED.</span>
+  </footer>
 </div>

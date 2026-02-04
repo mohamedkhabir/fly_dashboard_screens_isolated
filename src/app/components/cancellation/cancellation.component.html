@@ -1,13 +1,45 @@
-<div class="cancellation-container">
-  <header class="page-header">
-    <div class="header-content">
+<div class="cancellation-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
       <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="12" stroke="#0D6EFD" stroke-width="2"/>
-          <path d="M16 8V16L20 20" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L4 6V12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12V6L12 2Z" fill="#0D6EFD"/>
+          <path d="M12 6L16 8V12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12V8L12 6Z" fill="white"/>
         </svg>
-        <span class="logo-text">B2B Travel Portal</span>
+        <span>B2B Travel Portal</span>
       </div>
+      <nav class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="#" class="active">Bookings</a>
+        <a href="#">Reports</a>
+        <a href="#">Support</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="5" stroke="#9CA3AF" stroke-width="1.5"/>
+          <path d="M11 11L14 14" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input type="text" placeholder="Search PNR or Passenger">
+      </div>
+      <div class="user-info">
+        <div class="user-details">
+          <span class="user-name">John Corporate</span>
+          <span class="user-role">Premium Agency</span>
+        </div>
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Breadcrumb -->
       <nav class="breadcrumb">
         <a routerLink="/flight-search">Home</a>
         <span class="separator">/</span>
@@ -15,196 +47,129 @@
         <span class="separator">/</span>
         <span class="current">Cancellation & Refund</span>
       </nav>
-      <div class="header-actions">
-        <button class="btn btn-secondary" (click)="contactSupport()">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M14 3H4C3.44772 3 3 3.44772 3 4V11C3 11.5523 3.44772 12 4 12H6V15L9 12H14C14.5523 12 15 11.5523 15 11V4C15 3.44772 14.5523 3 14 3Z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          Need help with this?
-        </button>
-      </div>
-    </div>
-  </header>
 
-  <main class="main-content">
-    <div class="container">
-      <div class="page-title-section">
-        <h1>Process Cancellation & Refund</h1>
-        <p class="subtitle">Review your itinerary and Amadeus fare conditions before proceeding.</p>
-      </div>
-
-      <div class="warning-banner">
-        <div class="warning-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L22 20H2L12 2Z" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M12 9V13M12 17H12.01" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Process Cancellation & Refund</h1>
+          <div class="booking-meta">
+            <span class="pnr-badge">PNR: {{ pnr }}</span>
+            <span class="status-text">Status: <strong>{{ bookingStatus }}</strong></span>
+            <span class="divider">|</span>
+            <span class="ticket-date">Ticketed: <strong>{{ ticketDate }}</strong></span>
+          </div>
         </div>
-        <div class="warning-content">
-          <h3>Irreversible Action</h3>
-          <p>Once submitted, this cancellation request cannot be reversed. Refund amounts are subject to airline processing times (typically 7-14 business days).</p>
+        <div class="page-header-right">
+          <button class="btn-keep-booking" (click)="keepBooking()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Keep Booking
+          </button>
         </div>
       </div>
 
+      <!-- Content Grid -->
       <div class="content-grid">
-        <div class="main-column">
-          <div class="section-card booking-info">
-            <div class="card-header">
-              <h2>Booking Summary</h2>
-              <div class="booking-badges">
-                <span class="badge status">{{ bookingStatus }}</span>
-                <span class="badge pnr">PNR: {{ pnr }}</span>
-              </div>
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Warning Banner -->
+          <div class="warning-banner">
+            <div class="warning-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 9V13M12 17H12.01M10.29 3.86L1.82 18C1.64 18.3 1.55 18.64 1.55 19C1.55 19.36 1.64 19.7 1.82 20C2 20.3 2.26 20.56 2.58 20.74C2.9 20.92 3.27 21.01 3.64 21H20.36C20.73 21.01 21.1 20.92 21.42 20.74C21.74 20.56 22 20.3 22.18 20C22.36 19.7 22.45 19.36 22.45 19C22.45 18.64 22.36 18.3 22.18 18L13.71 3.86C13.53 3.56 13.27 3.32 12.95 3.15C12.63 2.98 12.27 2.89 11.9 2.89C11.53 2.89 11.17 2.98 10.85 3.15C10.53 3.32 10.27 3.56 10.09 3.86H10.29Z" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-
-            <div class="flight-details">
-              <div class="flight-route">
-                <div class="route-point">
-                  <div class="point-time">{{ flightInfo.departure.time }}</div>
-                  <div class="point-location">
-                    <strong>{{ flightInfo.departure.city }} ({{ flightInfo.departure.code }})</strong>
-                  </div>
-                  <div class="point-details">{{ flightInfo.departure.airport }}</div>
-                  <div class="point-date">{{ flightInfo.departure.date }}</div>
-                </div>
-
-                <div class="route-arrow">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </div>
-
-                <div class="route-point">
-                  <div class="point-time">{{ flightInfo.arrival.time }}</div>
-                  <div class="point-location">
-                    <strong>{{ flightInfo.arrival.city }} ({{ flightInfo.arrival.code }})</strong>
-                  </div>
-                  <div class="point-details">{{ flightInfo.arrival.airport }}</div>
-                  <div class="point-date">{{ flightInfo.arrival.date }}</div>
-                </div>
-              </div>
-
-              <div class="flight-meta">
-                <div class="meta-item">
-                  <span class="meta-label">Airline</span>
-                  <span class="meta-value">{{ flightInfo.airline }}</span>
-                </div>
-                <div class="meta-item">
-                  <span class="meta-label">Class</span>
-                  <span class="meta-value">{{ flightInfo.class }}</span>
-                </div>
-              </div>
+            <div class="warning-content">
+              <h3>Irreversible Action</h3>
+              <p>Once submitted, this cancellation request cannot be reversed. Refund amounts are subject to airline processing times (typically 7-14 business days).</p>
             </div>
           </div>
 
-          <div class="section-card method-selection">
-            <div class="card-header">
+          <!-- Section 1: Select Method & Passengers -->
+          <div class="section-card">
+            <div class="section-header">
               <h2>1. Select Method & Passengers</h2>
+              <span class="amadeus-badge">AMADEUS DIRECT</span>
             </div>
 
-            <div class="method-selector">
-              <div class="method-option" [class.disabled]="voidWindowExpired">
-                <label class="method-card">
-                  <input
-                    type="radio"
-                    name="method"
-                    value="refund"
-                    [checked]="cancellationMethod === 'refund'"
-                    (change)="setMethod('refund')"
-                  >
-                  <div class="method-content">
-                    <div class="method-header">
-                      <h3>Refund</h3>
-                    </div>
-                    <p class="method-description">Cancellation permitted with fee. USD 250.00 per refund.</p>
-                  </div>
-                </label>
+            <div class="section-body">
+              <!-- Cancellation Method -->
+              <div class="form-group">
+                <label class="form-label">Cancellation Method</label>
+                <div class="method-toggle">
+                  <button
+                    class="method-btn"
+                    [class.active]="cancellationMethod === 'refund'"
+                    (click)="setMethod('refund')">
+                    Refund
+                  </button>
+                  <button
+                    class="method-btn"
+                    [class.active]="cancellationMethod === 'void'"
+                    [class.disabled]="voidWindowExpired"
+                    (click)="setMethod('void')"
+                    [disabled]="voidWindowExpired">
+                    Void
+                    <svg *ngIf="voidWindowExpired" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <rect x="2" y="5" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4 5V3.5C4 2.11929 5.11929 1 6.5 1H7.5C8.88071 1 10 2.11929 10 3.5V5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </button>
+                </div>
+                <p class="void-notice" *ngIf="voidWindowExpired">Void window (24h) expired on 23 Nov 2023, 14:30.</p>
               </div>
 
-              <div class="method-option" [class.disabled]="voidWindowExpired">
-                <label class="method-card" [class.disabled]="voidWindowExpired">
-                  <input
-                    type="radio"
-                    name="method"
-                    value="void"
-                    [checked]="cancellationMethod === 'void'"
-                    (change)="setMethod('void')"
-                    [disabled]="voidWindowExpired"
-                  >
-                  <div class="method-content">
-                    <div class="method-header">
-                      <h3>Void</h3>
-                      <span class="method-badge" *ngIf="voidWindowExpired">Non-refundable</span>
-                    </div>
-                    <p class="method-description" *ngIf="!voidWindowExpired">Any time ticket is non-refundable in case of cancel/no-show.</p>
-                    <p class="method-description disabled-text" *ngIf="voidWindowExpired">Void window (24h) expired on 23 Nov 2023, 14:30.</p>
+              <!-- Select Passengers -->
+              <div class="form-group passengers-group">
+                <label class="form-label">Select Passengers</label>
+                <div class="passengers-list">
+                  <div
+                    class="passenger-item"
+                    *ngFor="let passenger of passengers"
+                    [class.selected]="passenger.selected">
+                    <label class="passenger-checkbox">
+                      <input
+                        type="checkbox"
+                        [checked]="passenger.selected"
+                        (change)="togglePassenger(passenger)">
+                      <span class="checkmark"></span>
+                      <div class="passenger-info">
+                        <span class="passenger-name">{{ passenger.name }}</span>
+                        <span class="passenger-ticket">Ticket: {{ passenger.ticketNumber }}</span>
+                      </div>
+                    </label>
+                    <span class="passenger-amount">${{ passenger.refundAmount.toFixed(2) }}</span>
                   </div>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-card passengers-selection">
-            <div class="card-header">
-              <h2>Select Passengers</h2>
-              <label class="select-all-checkbox">
-                <input
-                  type="checkbox"
-                  [checked]="allSelected"
-                  (change)="toggleAllPassengers()"
-                >
-                <span>Select All</span>
-              </label>
-            </div>
-
-            <div class="passengers-list">
-              <div
-                class="passenger-row"
-                *ngFor="let passenger of passengers"
-                [class.selected]="passenger.selected"
-              >
-                <label class="passenger-checkbox">
-                  <input
-                    type="checkbox"
-                    [checked]="passenger.selected"
-                    (change)="togglePassenger(passenger)"
-                  >
-                  <div class="passenger-info">
-                    <div class="passenger-name">{{ passenger.name }}</div>
-                    <div class="passenger-ticket">Ticket: {{ passenger.ticketNumber }}</div>
-                  </div>
-                </label>
-                <div class="passenger-refund">
-                  <span class="refund-label">Est. Refund</span>
-                  <span class="refund-amount">${{ passenger.refundAmount.toFixed(2) }}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="section-card fare-rules">
-            <div class="card-header">
+          <!-- Section 2: Fare Rules & Penalties -->
+          <div class="section-card">
+            <div class="section-header">
               <h2>2. Fare Rules & Penalties</h2>
             </div>
 
-            <div class="rules-content">
-              <div class="rules-section">
+            <div class="section-body rules-body">
+              <div class="rules-block">
                 <h4>CANCELLATIONS</h4>
-                <p>ANY TIME TICKET IS NON-REFUNDABLE IN CASE OF CANCEL/NO-SHOW.</p>
+                <p>ANY TIME TICKET IS NON-REFUNDABLE IN CASE OF NO-SHOW.</p>
                 <p>BEFORE DEPARTURE: CANCELLATIONS PERMITTED WITH FEE USD 250.00 FOR REFUND.</p>
                 <p>AFTER DEPARTURE: TICKET IS NON-REFUNDABLE.</p>
               </div>
 
-              <div class="rules-section">
+              <div class="rules-block">
                 <h4>REFUNDS</h4>
                 <p>REFUND OF UNUSED TAXES PERMITTED. SERVICE FEE MAY APPLY.</p>
                 <p>REFUND CALCULATED AT DATE OF CANCELLATION.</p>
               </div>
 
-              <button class="view-rules-button" (click)="viewFullRules()">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M5 2H13L17 6V15C17 15.5523 16.5523 16 16 16H5C4.44772 16 4 15.5523 4 15V3C4 2.44772 4.44772 2 5 2Z" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M13 2V6H17" stroke="currentColor" stroke-width="1.5"/>
+              <button class="view-rules-btn" (click)="viewFullRules()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 2H10L14 6V13C14 13.5523 13.5523 14 13 14H4C3.44772 14 3 13.5523 3 13V3C3 2.44772 3.44772 2 4 2Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10 2V6H14" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
                 View Full GDS Rules
               </button>
@@ -212,78 +177,118 @@
           </div>
         </div>
 
-        <div class="side-column">
-          <div class="section-card refund-summary">
-            <div class="card-header">
-              <h2>Refund Breakdown</h2>
-            </div>
-
-            <div class="summary-rows">
-              <div class="summary-row">
-                <span class="row-label">Base Fare Refund</span>
-                <span class="row-value">${{ refundBreakdown.baseFareRefund.toFixed(2) }}</span>
-              </div>
-              <div class="summary-row">
-                <span class="row-label">Tax Refund</span>
-                <span class="row-value">${{ refundBreakdown.taxRefund.toFixed(2) }}</span>
-              </div>
-              <div class="summary-row penalty">
-                <span class="row-label">Cancellation Penalty (CP)</span>
-                <span class="row-value negative">{{ refundBreakdown.cancellationPenalty.toFixed(2) }}</span>
-              </div>
-              <div class="summary-row">
-                <span class="row-label">Service Fee</span>
-                <span class="row-value negative">{{ refundBreakdown.serviceFee.toFixed(2) }}</span>
-              </div>
-              <div class="summary-row total">
-                <span class="row-label">Estimated Refund</span>
-                <span class="row-value">${{ refundBreakdown.estimatedRefund.toFixed(2) }}</span>
-              </div>
-            </div>
-
-            <div class="summary-note">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="7" stroke="#6B7280" stroke-width="1.5"/>
-                <path d="M8 4V8M8 11H8.01" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span>Final amount subject to airline final audit</span>
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- City Image Card -->
+          <div class="city-card">
+            <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&h=160&fit=crop" alt="New York City Skyline">
+            <div class="city-overlay">
+              <span>Original Booking: ${{ originalBooking.toFixed(2) }}</span>
             </div>
           </div>
 
-          <div class="section-card original-booking">
-            <div class="card-header">
-              <h2>Original Booking</h2>
+          <!-- Itinerary Summary -->
+          <div class="summary-card itinerary-card">
+            <h3>Itinerary Summary</h3>
+            <div class="itinerary-route">
+              <div class="route-item">
+                <div class="route-icon departure">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 14H14M3 9L8 4L13 9" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="route-details">
+                  <span class="route-code">LHR · London Heathrow</span>
+                  <span class="route-date">{{ flightInfo.departure.date }} · {{ flightInfo.departure.time }}</span>
+                </div>
+              </div>
+              <div class="route-item">
+                <div class="route-icon arrival">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 14H14M3 4L8 9L13 4" stroke="#0D6EFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="route-details">
+                  <span class="route-code">JFK · New York JFK</span>
+                  <span class="route-date">{{ flightInfo.arrival.date }} · {{ flightInfo.arrival.time }}</span>
+                </div>
+              </div>
             </div>
-            <div class="booking-amount">${{ originalBooking.toFixed(2) }}</div>
-            <div class="booking-date">Ticketed: {{ ticketDate }}</div>
+            <div class="itinerary-meta">
+              <div class="meta-row">
+                <span class="meta-label">Airline</span>
+                <span class="meta-value">British Airways (BA)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Class</span>
+                <span class="meta-value">Economy (Q)</span>
+              </div>
+            </div>
           </div>
 
-          <div class="action-buttons">
-            <button class="btn btn-secondary btn-block" (click)="keepBooking()">
+          <!-- Refund Breakdown -->
+          <div class="summary-card refund-card">
+            <h3>Refund Breakdown</h3>
+            <div class="breakdown-rows">
+              <div class="breakdown-row">
+                <span>Base Fare Refund</span>
+                <span>${{ refundBreakdown.baseFareRefund.toFixed(2) }}</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Tax Refund</span>
+                <span>${{ refundBreakdown.taxRefund.toFixed(2) }}</span>
+              </div>
+              <div class="breakdown-row penalty">
+                <span>Cancellation Penalty (CP)</span>
+                <span>-${{ Math.abs(refundBreakdown.cancellationPenalty).toFixed(2) }}</span>
+              </div>
+              <div class="breakdown-row penalty">
+                <span>Service Fee</span>
+                <span>-${{ Math.abs(refundBreakdown.serviceFee).toFixed(2) }}</span>
+              </div>
+            </div>
+            <div class="breakdown-total">
+              <span>Estimated Refund</span>
+              <span class="total-amount">${{ refundBreakdown.estimatedRefund.toFixed(2) }}</span>
+            </div>
+            <p class="breakdown-note">Final amount subject to airline final audit.</p>
+
+            <!-- Confirmation Checkbox -->
+            <label class="confirm-checkbox">
+              <input type="checkbox" [(ngModel)]="confirmationChecked">
+              <span class="checkmark"></span>
+              <span class="confirm-text">I confirm that I have read the fare rules and authorize the cancellation for the selected passengers.</span>
+            </label>
+
+            <!-- Confirm Button -->
+            <button class="btn-confirm" (click)="confirmCancellation()" [disabled]="!confirmationChecked">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M11 14L6 9L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              Keep Booking
-            </button>
-            <button class="btn btn-danger btn-block" (click)="confirmCancellation()">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M6 9L8 11L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M15 4.5L6.75 12.75L3 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               Confirm Cancellation
             </button>
           </div>
 
+          <!-- Help Card -->
           <div class="help-card">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="14" fill="#E7F1FF"/>
-              <path d="M16 10V16M16 22H16.01" stroke="#0D6EFD" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <h3>Need help with this?</h3>
-            <p>Contact our 24/7 Ticketing Desk for assistance with complex cancellations.</p>
+            <div class="help-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#6B7280" stroke-width="1.5"/>
+                <path d="M12 16V12M12 8H12.01" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="help-content">
+              <span class="help-title">Need help with this?</span>
+              <span class="help-text">Contact our 24/7 Ticketing Desk</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>© 2023 B2B Travel Portal | Amadeus GDS Connected | All Transactions are Secure & Encrypted</span>
+  </footer>
 </div>

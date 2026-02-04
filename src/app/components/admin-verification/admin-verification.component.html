@@ -1,135 +1,151 @@
-<div class="admin-verification-container">
-  <header class="admin-header">
-    <div class="header-content">
+<div class="admin-verification-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
       <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="6" fill="#0D6EFD"/>
-          <path d="M16 8L12 12H14V20H18V12H20L16 8Z" fill="white"/>
-          <rect x="10" y="22" width="12" height="2" fill="white"/>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="6" fill="#0D6EFD"/>
+          <circle cx="10" cy="10" r="3" fill="white"/>
+          <circle cx="18" cy="10" r="3" fill="white"/>
+          <circle cx="10" cy="18" r="3" fill="white"/>
+          <circle cx="18" cy="18" r="3" fill="white"/>
         </svg>
-        <span class="logo-text">Admin Portal</span>
+        <span>Admin Portal</span>
       </div>
-      <div class="header-search">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <circle cx="8" cy="8" r="6" stroke="#9CA3AF" stroke-width="1.5"/>
-          <path d="M12 12L16 16" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="5" stroke="#9CA3AF" stroke-width="1.5"/>
+          <path d="M11 11L14 14" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <input type="text" placeholder="Search agencies...">
       </div>
-      <nav class="header-nav">
-        <a routerLink="/admin-verification" class="nav-link" routerLinkActive="active">Agencies</a>
-        <a routerLink="/booking-confirmation" class="nav-link" routerLinkActive="active">Bookings</a>
-        <a routerLink="/wallet" class="nav-link" routerLinkActive="active">Payments</a>
-        <a routerLink="/admin-settings" class="nav-link" routerLinkActive="active">Settings</a>
+    </div>
+    <div class="header-right">
+      <nav class="nav-links">
+        <a routerLink="/agencies" routerLinkActive="active">Agencies</a>
+        <a routerLink="/bookings">Bookings</a>
+        <a routerLink="/payments">Payments</a>
+        <a routerLink="/settings">Settings</a>
       </nav>
-      <div class="user-section">
-        <button class="icon-button">
+      <div class="header-icons">
+        <button class="icon-btn">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M15 7C15 5.93913 14.5786 4.92172 13.8284 4.17157C13.0783 3.42143 12.0609 3 11 3C9.93913 3 8.92172 3.42143 8.17157 4.17157C7.42143 4.92172 7 5.93913 7 7C7 11 5 12 5 12H17C17 12 15 11 15 7Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11.73 15C11.5542 15.3031 11.3019 15.5547 10.9982 15.7295C10.6946 15.9044 10.3504 15.9965 10 15.9965C9.64964 15.9965 9.30541 15.9044 9.00179 15.7295C8.69818 15.5547 8.44583 15.3031 8.27 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </button>
-        <button class="icon-button">
+        <button class="icon-btn">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6V10M10 14H10.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </button>
-        <div class="user-avatar">
-          <img src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23F59E0B'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='600'%3EA%3C/text%3E%3C/svg%3E" alt="Admin">
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Admin">
         </div>
       </div>
     </div>
   </header>
 
+  <!-- Breadcrumb -->
   <div class="breadcrumb">
-    <div class="breadcrumb-content">
-      <a routerLink="/admin-settings">Admin</a>
-      <span class="separator">/</span>
-      <a routerLink="/admin-verification">Agencies</a>
-      <span class="separator">/</span>
-      <span class="current">KYC Verification</span>
-    </div>
+    <a href="#">Admin</a>
+    <span class="separator">/</span>
+    <a href="#">Agencies</a>
+    <span class="separator">/</span>
+    <span class="current">KYC Verification</span>
   </div>
 
+  <!-- Main Content -->
   <main class="main-content">
     <div class="container">
-      <div class="agency-header-section">
-        <div class="agency-title">
-          <h1>{{ agencyName }}</h1>
-          <span class="status-badge pending">PENDING REVIEW</span>
+      <!-- Agency Header -->
+      <div class="agency-header">
+        <div class="agency-header-left">
+          <div class="agency-title">
+            <h1>{{ agencyName }}</h1>
+            <span class="status-badge pending">PENDING REVIEW</span>
+          </div>
+          <p class="agency-meta">
+            Agency ID: <strong>{{ agencyId }}</strong> • Submitted on {{ submittedDate }}
+          </p>
         </div>
-        <div class="agency-meta">
-          <span>Agency ID: <strong>{{ agencyId }}</strong></span>
-          <span class="separator">•</span>
-          <span>Submitted on {{ submittedDate }}</span>
-        </div>
-        <div class="header-actions">
-          <button class="btn btn-secondary" (click)="downloadDossier()">
+        <div class="agency-header-right">
+          <button class="btn btn-outline" (click)="downloadDossier()">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M9 2V10M9 10L12 7M9 10L6 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 12V14C3 14.5304 3.21071 15.0391 3.58579 15.4142C3.96086 15.7893 4.46957 16 5 16H13C13.5304 16 14.0391 15.7893 14.4142 15.4142C14.7893 15.0391 15 14.5304 15 14V12M9 3V11M9 11L6 8M9 11L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             Download Dossier
           </button>
-          <button class="btn btn-secondary" (click)="viewAuditLog()">
+          <button class="btn btn-outline" (click)="viewAuditLog()">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M9 5V9L12 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M9 5V9L12 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
             Audit Log
           </button>
         </div>
       </div>
 
+      <!-- Status Cards -->
       <div class="status-cards">
         <div class="status-card">
-          <div class="status-icon blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z" stroke="currentColor" stroke-width="2"/>
-              <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="status-content">
-            <div class="status-label">Verification Status</div>
-            <div class="status-value">{{ verificationStatus }}</div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 66%"></div>
+          <div class="status-card-header">
+            <span class="status-label">Verification Status</span>
+            <div class="status-icon blue">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M6.5 10L9 12.5L13.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
           </div>
-        </div>
-
-        <div class="status-card">
-          <div class="status-icon green">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
-              <circle cx="15" cy="12" r="2" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="status-content">
-            <div class="status-label">Subscription</div>
-            <div class="status-value">{{ subscriptionPlan }}</div>
-            <div class="status-meta">Active until Dec 2024</div>
+          <div class="status-value">{{ verificationStatus }}</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 66%"></div>
           </div>
         </div>
 
         <div class="status-card">
-          <div class="status-icon purple">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 2V5M12 19V22M5 12H2M22 12H19M6.34 6.34L4.22 4.22M19.78 19.78L17.66 17.66M17.66 6.34L19.78 4.22M4.22 19.78L6.34 17.66" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+          <div class="status-card-header">
+            <span class="status-label">Subscription</span>
+            <div class="status-icon green">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="5" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="14" cy="10" r="2" fill="currentColor"/>
+              </svg>
+            </div>
           </div>
-          <div class="status-content">
-            <div class="status-label">Amadeus API</div>
-            <div class="status-value">{{ apiStatus }}</div>
-            <div class="status-meta">Production Environment</div>
+          <div class="status-value">{{ subscriptionPlan }}</div>
+          <div class="status-meta green">Active until Dec 2024</div>
+        </div>
+
+        <div class="status-card">
+          <div class="status-card-header">
+            <span class="status-label">Amadeus API</span>
+            <div class="status-icon purple">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 2V5M10 15V18M2 10H5M15 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M4.93 4.93L7.05 7.05M12.95 12.95L15.07 15.07M15.07 4.93L12.95 7.05M7.05 12.95L4.93 15.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
           </div>
+          <div class="status-value">{{ apiStatus }}</div>
+          <div class="status-meta">Production Environment</div>
         </div>
       </div>
 
+      <!-- Main Grid -->
       <div class="content-grid">
-        <div class="documents-section">
+        <!-- Left Column - Documents -->
+        <div class="documents-column">
+          <!-- Legal Documents Section -->
           <div class="section-card">
             <div class="section-header">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M6 2H12L16 6V16C16 17.1046 15.1046 18 14 18H6C4.89543 18 4 17.1046 4 16V4C4 2.89543 4.89543 2 6 2Z" stroke="#6B7280" stroke-width="1.5"/>
+                <path d="M12 2V6H16" stroke="#6B7280" stroke-width="1.5"/>
+              </svg>
               <h2>Legal Documents</h2>
             </div>
 
@@ -138,130 +154,147 @@
                 class="document-item"
                 *ngFor="let doc of documents"
                 [class.active]="selectedDocument?.id === doc.id"
-                (click)="viewDocument(doc)"
-              >
-                <div class="doc-icon">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <rect width="40" height="40" rx="8" fill="#F3F4F6"/>
-                    <path d="M15 12C14.4477 12 14 12.4477 14 13V27C14 27.5523 14.4477 28 15 28H25C25.5523 28 26 27.5523 26 27V16L22 12H15Z" stroke="#6B7280" stroke-width="1.5"/>
-                    <path d="M22 12V16H26" stroke="#6B7280" stroke-width="1.5"/>
+                (click)="viewDocument(doc)">
+
+                <div class="doc-icon" [ngClass]="{
+                  'icon-blue': doc.status === 'verified',
+                  'icon-yellow': doc.status === 'pending'
+                }">
+                  <!-- Document icon -->
+                  <svg *ngIf="doc.name === 'KBIS Registration'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="4" y="3" width="12" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M7 7H13M7 10H13M7 13H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <!-- Image icon for RIB -->
+                  <svg *ngIf="doc.name === 'RIB (Bank Details)'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="3" y="5" width="14" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="7" cy="9" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M3 13L7 10L10 12L14 9L17 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <!-- ID Card icon -->
+                  <svg *ngIf="doc.name === 'Legal Rep ID'" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="2" y="4" width="16" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M2 8H18" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="7" cy="12" r="2" stroke="currentColor" stroke-width="1"/>
                   </svg>
                 </div>
+
                 <div class="doc-info">
-                  <div class="doc-name">{{ doc.name }}</div>
-                  <div class="doc-meta">
-                    Uploaded {{ doc.uploadDate }} • {{ doc.fileType }} ({{ doc.fileSize }})
-                  </div>
+                  <span class="doc-name">{{ doc.name }}</span>
+                  <span class="doc-meta">Uploaded {{ doc.uploadDate }} • {{ doc.fileType }} ({{ doc.fileSize }})</span>
                 </div>
-                <div class="doc-status">
-                  <span class="status-badge-small" [class.verified]="doc.status === 'verified'" [class.pending]="doc.status === 'pending'">
+
+                <div class="doc-actions">
+                  <span class="status-tag" [ngClass]="{
+                    'verified': doc.status === 'verified',
+                    'pending': doc.status === 'pending'
+                  }">
                     <svg *ngIf="doc.status === 'verified'" width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-                      <path d="M4 7L6 9L10 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M4.5 7L6.5 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <svg *ngIf="doc.status === 'pending'" width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-                      <path d="M7 3V7L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M7 4V7L9 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                     {{ doc.status === 'verified' ? 'Verified' : 'Pending Review' }}
                   </span>
-                  <button class="view-button">
+                  <button class="btn-view" *ngIf="doc.status === 'verified'">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <path d="M9 3C4 3 1.5 9 1.5 9S4 15 9 15S16.5 9 16.5 9S14 3 9 3Z" stroke="currentColor" stroke-width="1.5"/>
-                      <circle cx="9" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M9 4C5 4 2 9 2 9S5 14 9 14S16 9 16 9S13 4 9 4Z" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="1.5"/>
                     </svg>
+                  </button>
+                  <button class="btn-review" *ngIf="doc.status === 'pending'" (click)="viewDocument(doc); $event.stopPropagation()">
+                    Review Now
                   </button>
                 </div>
               </div>
             </div>
 
+            <!-- Document Preview -->
             <div class="document-preview" *ngIf="showDocumentPreview && selectedDocument">
-              <div class="preview-header">
-                <h3>Document Preview</h3>
-                <div class="preview-actions">
-                  <button class="icon-btn" (click)="fullScreenPreview()" title="Full Screen">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <path d="M2 7V3H6M16 7V3H12M16 11V15H12M2 11V15H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    Full Screen
-                  </button>
-                  <button class="icon-btn" (click)="printDocument()" title="Print">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <rect x="4" y="2" width="10" height="5" stroke="currentColor" stroke-width="1.5"/>
-                      <rect x="2" y="7" width="14" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                      <rect x="4" y="11" width="10" height="5" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    Print Document
-                  </button>
+              <div class="preview-content">
+                <div class="preview-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="20" fill="#F3F4F6"/>
+                    <path d="M24 15C19 15 15 24 15 24C15 24 19 33 24 33C29 33 33 24 33 24C33 24 29 15 24 15Z" stroke="#9CA3AF" stroke-width="2"/>
+                    <circle cx="24" cy="24" r="4" stroke="#9CA3AF" stroke-width="2"/>
+                  </svg>
+                  <h4>SENSITIVE DOCUMENT PREVIEW</h4>
+                  <p>ID Document for Jean-Luc Picard</p>
                 </div>
               </div>
-              <div class="preview-content">
-                <div class="sensitive-document">
-                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="28" fill="#E7F1FF"/>
-                    <path d="M32 18C25.37 18 20 23.37 20 30V32H18V44H46V32H44V30C44 23.37 38.63 18 32 18ZM32 22C36.42 22 40 25.58 40 30V32H24V30C24 25.58 27.58 22 32 22Z" fill="#0D6EFD"/>
+              <div class="preview-actions">
+                <button class="btn-action" (click)="fullScreenPreview()">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 5V3C2 2.44772 2.44772 2 3 2H5M11 2H13C13.5523 2 14 2.44772 14 3V5M14 11V13C14 13.5523 13.5523 14 13 14H11M5 14H3C2.44772 14 2 13.5523 2 13V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                   </svg>
-                  <h3>SENSITIVE DOCUMENT PREVIEW</h3>
-                  <p>ID Document for Jean-Luc Picard</p>
-                  <div class="document-placeholder">
-                    <div class="placeholder-line"></div>
-                    <div class="placeholder-line short"></div>
-                    <div class="placeholder-line"></div>
-                    <div class="placeholder-line medium"></div>
-                  </div>
-                </div>
+                  Full Screen
+                </button>
+                <button class="btn-action" (click)="printDocument()">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect x="4" y="2" width="8" height="4" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="2" y="6" width="12" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="4" y="9" width="8" height="5" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  Print Document
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="details-section">
-          <div class="section-card">
+        <!-- Right Column - Details & Decision -->
+        <div class="details-column">
+          <!-- Agency Details Card -->
+          <div class="section-card details-card">
             <div class="section-header">
               <h2>Agency Details</h2>
             </div>
             <div class="details-content">
               <div class="detail-row">
-                <div class="detail-label">COMPANY NAME</div>
-                <div class="detail-value">{{ agencyDetails.companyName }}</div>
+                <span class="detail-label">COMPANY NAME</span>
+                <span class="detail-value">{{ agencyDetails.companyName }}</span>
               </div>
               <div class="detail-row">
-                <div class="detail-label">TAX ID / VAT</div>
-                <div class="detail-value">{{ agencyDetails.taxId }}</div>
+                <span class="detail-label">TAX ID / VAT</span>
+                <span class="detail-value">{{ agencyDetails.taxId }}</span>
               </div>
               <div class="detail-row">
-                <div class="detail-label">ADDRESS</div>
-                <div class="detail-value">{{ agencyDetails.address }}</div>
+                <span class="detail-label">ADDRESS</span>
+                <span class="detail-value">{{ agencyDetails.address }}</span>
               </div>
               <div class="detail-row">
-                <div class="detail-label">LEGAL REPRESENTATIVE</div>
-                <div class="detail-value">
+                <span class="detail-label">LEGAL REPRESENTATIVE</span>
+                <span class="detail-value">
                   {{ agencyDetails.legalRep }}<br>
                   <span class="detail-meta">{{ agencyDetails.position }}</span>
-                </div>
+                </span>
               </div>
               <div class="detail-row">
-                <div class="detail-label">CONTACT EMAIL</div>
-                <div class="detail-value">
+                <span class="detail-label">CONTACT EMAIL</span>
+                <span class="detail-value">
                   <a href="mailto:{{ agencyDetails.email }}">{{ agencyDetails.email }}</a>
-                </div>
+                </span>
               </div>
             </div>
           </div>
 
+          <!-- Decision Card -->
           <div class="section-card decision-card">
             <div class="section-header">
               <h2>Decision</h2>
             </div>
             <div class="decision-content">
-              <button class="btn btn-success btn-lg btn-block" (click)="approveAgency()">
+              <button class="btn btn-approve" (click)="approveAgency()">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M6.5 10L9 12.5L13.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 Approve Agency
               </button>
-              <button class="btn btn-danger btn-lg btn-block" (click)="rejectAgency()">
+              <button class="btn btn-reject" (click)="rejectAgency()">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -275,17 +308,13 @@
                   class="notes-textarea"
                   [(ngModel)]="adminNotes"
                   placeholder="Add a note for other admins..."
-                  rows="4"
-                ></textarea>
+                  rows="3">
+                </textarea>
               </div>
 
-              <div class="approval-note">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="7" stroke="#6B7280" stroke-width="1.5"/>
-                  <path d="M8 4V8M8 11H8.01" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <p>Approved agencies gain immediate access to Amadeus inventory.</p>
-              </div>
+              <p class="approval-note">
+                <em>Approved agencies gain immediate access to Amadeus inventory.</em>
+              </p>
             </div>
           </div>
         </div>
