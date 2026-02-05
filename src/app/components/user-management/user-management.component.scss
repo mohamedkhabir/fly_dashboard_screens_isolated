@@ -1,7 +1,7 @@
 .user-management-container {
   display: flex;
   min-height: 100vh;
-  background: #F8F9FA;
+  //background: #F8F9FA;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -90,7 +90,7 @@
   color: #0D6EFD;
 }
 
-/* Sidebar Footer */
+/* Sidebar FooterComponent */
 .sidebar-footer {
   padding: 8px;
   border-top: 1px solid #E5E7EB;
@@ -155,8 +155,8 @@
 /* ============ MAIN CONTENT ============ */
 .main-content {
   flex: 1;
-  margin-left: 200px;
-  padding: 24px 32px;
+  //margin-left: 200px;
+  //padding: 24px 32px;
 }
 
 .page-header {

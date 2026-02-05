@@ -1,0 +1,32 @@
+<div class="app-layout">
+  <app-header
+    [showSaveButton]="showSaveButton"
+    [showNewBookingButton]="showNewBookingButton"
+    [hasUnsavedChanges]="hasUnsavedChanges"
+    [notificationCount]="notificationCount"
+    (saveChanges)="onSaveChanges()"
+  ></app-header>
+
+  <div class="layout-body">
+    <app-sidebar
+      [title]="sidebarTitle"
+      [subtitle]="sidebarSubtitle"
+      [showMainNav]="showMainNav"
+      [showSettingsNav]="showSettingsNav"
+      [showAdminNav]="showAdminNav"
+    ></app-sidebar>
+
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <app-footer
+    [systemOnline]="systemOnline"
+    [companyName]="companyName"
+    [supportPhone]="supportPhone"
+    [showPrivacyPolicy]="showPrivacyPolicy"
+    [showTerms]="showTerms"
+    [showDocumentation]="showDocumentation"
+  ></app-footer>
+</div>

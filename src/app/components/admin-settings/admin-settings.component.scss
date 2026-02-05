@@ -153,10 +153,10 @@ $error-red: #ef4444;
 .content-wrapper {
   display: flex;
   flex: 1;
-  max-width: 1400px;
+
   width: 100%;
   margin: 0 auto;
-  padding: 32px 40px;
+  //padding: 32px 40px;
   gap: 40px;
 }
 
@@ -223,7 +223,7 @@ $error-red: #ef4444;
 // Main Content
 .main-content {
   flex: 1;
-  min-width: 0;
+
 }
 
 .page-header {
@@ -607,7 +607,7 @@ $error-red: #ef4444;
   }
 }
 
-// Footer
+// FooterComponent
 .footer {
   display: flex;
   justify-content: space-between;

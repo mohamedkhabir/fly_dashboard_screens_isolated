@@ -1,92 +1,8 @@
 <div class="admin-layout">
-  <!-- Top Navigation Bar -->
-  <header class="top-nav">
-    <div class="nav-left">
-      <div class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="6" fill="#0D6EFD"/>
-          <path d="M16 8L12 12H14V20H18V12H20L16 8Z" fill="white"/>
-          <rect x="10" y="22" width="12" height="2" fill="white"/>
-        </svg>
-        <span>Amadeus Admin</span>
-      </div>
-      <div class="search-box">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <input type="text" placeholder="Search for agencies or logs..">
-      </div>
-    </div>
-    <div class="nav-right">
-      <nav class="main-nav">
-        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-        <a routerLink="/agencies" routerLinkActive="active">Agencies</a>
-        <a routerLink="/bookings" routerLinkActive="active">Bookings</a>
-        <a routerLink="/settings" routerLinkActive="active" class="active">Settings</a>
-      </nav>
-      <button
-        class="btn btn-primary save-btn"
-        (click)="saveChanges()"
-        [disabled]="!hasUnsavedChanges"
-      >
-        Save Changes
-      </button>
-      <div class="user-avatar">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M4 18C4 14.6863 6.68629 12 10 12C13.3137 12 16 14.6863 16 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-  </header>
+
 
   <div class="content-wrapper">
-    <!-- Settings Sidebar -->
-    <aside class="settings-sidebar">
-      <div class="sidebar-header">
-        <h2>Settings</h2>
-        <p>Manage platform pricing & rules</p>
-      </div>
-      <nav class="settings-nav">
-        <a routerLink="/settings/global-fees" routerLinkActive="active" class="nav-item active">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="14" cy="10" r="2" fill="currentColor"/>
-          </svg>
-          <span>Global Fees</span>
-        </a>
-        <a routerLink="/settings/tax-rules" routerLinkActive="active" class="nav-item">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M4 10L8 6L12 10L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 14L8 10L12 14L16 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Tax Rules</span>
-        </a>
-        <a routerLink="/settings/agency-groups" routerLinkActive="active" class="nav-item">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="13" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="10" cy="13" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          <span>Agency Groups</span>
-        </a>
-        <a routerLink="/settings/billing-logs" routerLinkActive="active" class="nav-item">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="4" y="3" width="12" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 7H13M7 10H13M7 13H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span>Billing Logs</span>
-        </a>
-        <a routerLink="/settings/audit-trail" routerLinkActive="active" class="nav-item">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M10 6V10L13 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span>Audit Trail</span>
-        </a>
-      </nav>
-    </aside>
+
 
     <!-- Main Content -->
     <main class="main-content">
@@ -289,15 +205,6 @@
     </main>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-left">
-      © 2024 Amadeus B2B Platform. System Status: <span class="status-operational">Operational</span>
-    </div>
-    <div class="footer-right">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Documentation</a>
-    </div>
-  </footer>
+
+
 </div>

@@ -16,7 +16,7 @@ $success-green: #10B981;
 // Reset & Base
 .cancellation-page {
   min-height: 100vh;
-  background: $bg-page;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
@@ -154,7 +154,7 @@ $success-green: #10B981;
 }
 
 .container {
-  max-width: 1200px;
+
   margin: 0 auto;
 }
 
@@ -779,7 +779,7 @@ $success-green: #10B981;
   }
 }
 
-// Footer
+// FooterComponent
 .footer {
   background: white;
   border-top: 1px solid $border-color;

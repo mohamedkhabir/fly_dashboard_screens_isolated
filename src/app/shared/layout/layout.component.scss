@@ -1,0 +1,32 @@
+$bg-page: #f8f9fa;
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-page;
+}
+
+.layout-body {
+  display: flex;
+  flex: 1;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+}

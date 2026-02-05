@@ -1,9 +1,9 @@
 // Multi-City Component Styles - Pixel Perfect Design
-// Layout: Search (full width) → Stats Tabs → Two columns (Filters | Results)
+// LayoutComponent: Search (full width) → Stats Tabs → Two columns (Filters | Results)
 
 .multi-city-container {
   min-height: 100vh;
-  background: #F5F5F5;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -163,7 +163,7 @@
 // ============================================
 
 .main-content {
-  max-width: 1400px;
+
   margin: 0 auto;
   padding: 20px 24px;
 }
