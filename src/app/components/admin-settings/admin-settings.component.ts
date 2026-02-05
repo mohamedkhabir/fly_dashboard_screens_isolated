@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-admin-settings',
@@ -39,6 +39,11 @@ export class AdminSettingsComponent implements OnInit {
 
   onInputChange(): void {
     this.hasUnsavedChanges = true;
+  }
+
+  toggleBankTransfers(): void {
+    this.applyFeeToBankTransfers = !this.applyFeeToBankTransfers;
+    this.onInputChange();
   }
 
   viewHistory(): void {

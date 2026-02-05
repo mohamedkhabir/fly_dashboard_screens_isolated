@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 type ModalType = 'success' | 'error' | 'warning' | null;
 
@@ -38,12 +38,7 @@ export class FeedbackComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    // Auto-show success modal for demo
-    setTimeout(() => {
-      this.showModal('success');
-    }, 500);
-  }
+  ngOnInit(): void {}
 
   showModal(type: ModalType): void {
     this.activeModal = type;
@@ -90,5 +85,15 @@ export class FeedbackComponent implements OnInit {
       alert('Booking cancelled successfully');
       this.closeModal();
     }
+  }
+
+  // Toast actions
+  closeToast(toastType: string): void {
+    console.log(`Closing ${toastType} toast`);
+  }
+
+  extendSession(): void {
+    console.log('Extending session');
+    alert('Session extended by 30 minutes');
   }
 }
